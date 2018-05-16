@@ -5,16 +5,19 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "blocks": "link:..",
+    "catalog": "^3.0.0-rc.4",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "blocks": "link:..",
     "react-scripts": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "catalog-start": "catalog start",
+    "catalog-build": "catalog build"
   }
 }
