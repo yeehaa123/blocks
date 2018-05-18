@@ -1,4 +1,4 @@
-import React, { Component, Children } from "react";
+import React, { Component } from "react";
 import titleCase from "voca/title_case";
 import PropTypes from "prop-types";
 import HeaderWrapper from "./HeaderWrapper";

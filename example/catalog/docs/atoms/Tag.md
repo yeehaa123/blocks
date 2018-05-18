@@ -1,3 +1,3 @@
 ```react
-  <Tag>Spicy</Tag>
+<Tag>Spicy</Tag>
 ```

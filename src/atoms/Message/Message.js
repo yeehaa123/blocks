@@ -1,7 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import titleCase from "voca/title_case";
-import styled from "styled-components";
 import { Label } from "..";
 import MessageWrapper from "./MessageWrapper";
 

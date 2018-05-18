@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import titleCase from "voca/title_case";
 import Icon from "../../atoms/Icon";

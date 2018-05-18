@@ -1,9 +1,9 @@
 import { pageLoader } from "catalog";
 
-export default ({ name: collectionName, blocks }) => {
+export default ({ name: collectionName, blocks, helpers }) => {
   const pageNames = Object.keys(blocks);
   return pageNames.map(blockName => ({
-    imports: { ...blocks },
+    imports: { ...blocks, ...helpers },
     path: `/${collectionName}/${blockName}`,
     title: `${blockName}`,
     content: pageLoader(() =>
