@@ -20,7 +20,7 @@ export default {
       format: "es"
     }
   ],
-  external: ["stream"],
+  external: ["stream", "styled-components"],
   plugins: [
     external(),
     postcss({
@@ -33,10 +33,7 @@ export default {
     }),
     resolve(),
     commonjs({
-      namedExports: {
-        "react-is": ["isValidElementType"],
-        "html-tags": ["default"]
-      } // Default: undefined
+      namedExports: {} // Default: undefined
     })
   ]
 };

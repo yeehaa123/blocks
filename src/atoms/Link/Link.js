@@ -1,0 +1,41 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import LinkWrapper from "./LinkWrapper";
+
+/**
+ * The link component for the Offcourse project
+ */
+
+class Link extends Component {
+  render() {
+    const { href, icon, children, onClick, variant, ...rest } = this.props;
+    const disabled = this.props.disabled || this.props.loading;
+    return (
+      <LinkWrapper
+        onClick={!disabled ? onClick : () => {}}
+        href={!disabled ? href : undefined}
+        disabled={disabled}
+      >
+        {children}
+      </LinkWrapper>
+    );
+  }
+}
+
+Link.propTypes = {
+  /** determines if the link should be disabled */
+  disabled: PropTypes.bool,
+  /** the text that is displayed on the link */
+  children: PropTypes.string,
+  /** code that the link should execute when clicked */
+  onClick: PropTypes.func,
+  /** a url that the link should link to, automatically turns the link into the basic type */
+  href: PropTypes.string
+};
+
+Link.defaultProps = {
+  disabled: false,
+  type: "link"
+};
+
+export default Link;

@@ -36,6 +36,7 @@ const namedGrayScale = grayScale.map((value, index) => {
 });
 
 const colors = {
+  grayScale,
   primary: baseColors.blue,
   disabled: grayScale[2],
   positive: baseColors.green,

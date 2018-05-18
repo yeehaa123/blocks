@@ -4,8 +4,8 @@ import lowerCase from "voca/lower_case";
 import AvatarWrapper from "./AvatarWrapper";
 
 /**
- * @name Avatar
- * @description a react component that shows the avatar image of a given user
+ * A Component for the Offcourse Project that shows the avatar image of a
+ * given user
  */
 
 class Avatar extends Component {

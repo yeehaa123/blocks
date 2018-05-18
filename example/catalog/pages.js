@@ -1,5 +1,6 @@
 import { atoms, themes } from "blocks";
 import { pageLoader } from "catalog";
+import createPages from "./createCollectionPages";
 
 const theme = themes.offcourse;
 
@@ -30,13 +31,9 @@ export default [
   },
   {
     title: "Atoms",
-    pages: [
-      {
-        imports: { ...atoms },
-        path: "/atoms/avatar",
-        title: "Avatar",
-        content: pageLoader(() => import("./docs/atoms/Avatar.md"))
-      }
-    ]
+    pages: createPages({
+      name: "atoms",
+      blocks: atoms
+    })
   }
 ];

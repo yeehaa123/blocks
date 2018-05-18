@@ -1,14 +1,12 @@
-Avatar with Custom Image
+Avatar with Custom and Custom Image
 
-```react
+```react|span-2
+const name = "Yeehaa";
+<Avatar name={name} />;
+```
+
+```react|span-2
 const url = "https://assets.offcourse.io/portraits/offcourse_1.jpg";
 const name = "Yeehaa";
 <Avatar url={url} name={name} />;
-```
-
-Avatar with Default Image
-
-```react
-const name = "Yeehaa";
-<Avatar name={name} />;
 ```

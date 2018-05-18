@@ -1,4 +1,5 @@
 import React from "react";
+import styled, { ThemeProvider } from "styled-components";
 import ReactDOM from "react-dom";
 import { Catalog } from "catalog";
 import pages from "./pages";
@@ -14,6 +15,8 @@ const theme = {
 };
 
 ReactDOM.render(
-  <Catalog title="Catalog" theme={theme} pages={pages} />,
+  <ThemeProvider theme={themes.offcourse}>
+    <Catalog title="Catalog" theme={theme} pages={pages} />
+  </ThemeProvider>,
   document.getElementById("catalog")
 );
