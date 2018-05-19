@@ -50,9 +50,9 @@ const ButtonWrapper = system(
     lineHeight: 1,
     minWidth: "9.375rem",
     maxWidth: "9.375rem",
-    px: 7,
-    py: 5,
-    borderBottom: 3
+    px: 6,
+    py: 4,
+    borderBottom: 2
   },
   props => ({
     backgroundColor: theme(`colors.${background[props.variant]}`)(props),
