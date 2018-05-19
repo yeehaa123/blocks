@@ -34,3 +34,26 @@ const clickHandler = () => alert("ALERT");
     Don't Click
   </Button>
 ```
+
+3 different sizes
+
+```react|span-2
+const clickHandler = () => alert("ALERT");
+  <Button size="small" variant="primary" href="/">
+    Click!
+  </Button>
+```
+
+```react|span-2
+const clickHandler = () => alert("ALERT");
+  <Button size="medium" variant="positive" onClick={clickHandler}>
+    Please Click
+  </Button>
+```
+
+```react|span-2
+const clickHandler = () => alert("ALERT");
+  <Button size="large" variant="negative" onClick={clickHandler}>
+    Click Click Click Click Click
+  </Button>
+```

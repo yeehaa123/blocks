@@ -21,11 +21,17 @@ class Button extends Component {
       onClick,
       tabindex,
       variant,
+      size,
       ...rest
     } = this.props;
     const buttonType = type || "button";
 
     const disabled = this.props.disabled || this.props.loading;
+    const widths = {
+      small: "6.25rem",
+      medium: "9.375rem",
+      large: "18.75rem"
+    };
 
     return (
       <ButtonWrapper
@@ -34,6 +40,7 @@ class Button extends Component {
         disabled={disabled}
         onClick={onClick}
         tabIndex={tabindex || 1}
+        width={widths[size]}
       >
         {href ? (
           <a href={!disabled ? href : undefined}>{children}</a>
@@ -68,6 +75,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   variant: "default",
+  size: "medium",
   disabled: false,
   type: "button"
 };
