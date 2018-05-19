@@ -40,7 +40,6 @@ export default [
     title: "Molecules",
     pages: createPages({
       name: "molecules",
-      helpers: atoms,
       blocks: molecules
     })
   }

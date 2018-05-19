@@ -49,7 +49,13 @@ Button.propTypes = {
   /** determines if the button should be disabled */
   disabled: PropTypes.bool,
   /** determines the status of the button */
-  variant: PropTypes.oneOf(["default", "primary", "positive", "negative"]),
+  variant: PropTypes.oneOf([
+    "default",
+    "primary",
+    "positive",
+    "warning",
+    "negative"
+  ]),
   /** the text that is displayed on the button */
   children: PropTypes.string,
   /** code that the button should execute when clicked */

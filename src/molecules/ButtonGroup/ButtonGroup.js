@@ -1,0 +1,52 @@
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { map, addIndex, isEmpty } from "ramda";
+import { Button } from "../../atoms";
+import ButtonGroupWrapper from "./ButtonGroupWrapper";
+
+const mapIndexed = addIndex(map);
+
+export default class ButtonGroup extends Component {
+  static Button = Button;
+
+  static propTypes = {
+    direction: PropTypes.oneOf(["horizontal", "vertical"]),
+    buttons: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        href: PropTypes.string,
+        onClick: PropTypes.func
+      })
+    ),
+    children: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.arrayOf(PropTypes.element)
+    ])
+  };
+
+  static defaultProps = {
+    buttons: [],
+    direction: "horizontal"
+  };
+
+  renderButtons = () => {
+    const { buttons } = this.props;
+    return mapIndexed(
+      ({ title, variant, href, onClick }, index) => (
+        <Button variant={variant} key={index} href={href} onClick={onClick}>
+          {title}
+        </Button>
+      ),
+      buttons
+    );
+  };
+
+  render() {
+    const { buttons, children, direction } = this.props;
+    return (
+      <ButtonGroupWrapper>
+        {isEmpty(buttons) ? children : this.renderButtons()}
+      </ButtonGroupWrapper>
+    );
+  }
+}

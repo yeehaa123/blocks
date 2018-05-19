@@ -6,6 +6,7 @@ const background = {
   disabled: "disabled",
   primary: "primary",
   positive: "positive",
+  warning: "warning",
   negative: "negative"
 };
 
@@ -14,6 +15,7 @@ const inverseBackground = {
   disabled: "disabled",
   primary: "grayScale.3",
   positive: "grayScale.3",
+  warning: "grayScale.3",
   negative: "grayScale.3"
 };
 
@@ -22,6 +24,7 @@ const textColor = {
   disabled: "grayScale.1",
   negative: "white",
   primary: "black",
+  warning: "black",
   positive: "black"
 };
 
@@ -30,6 +33,7 @@ const inverseText = {
   disabled: "white",
   negative: "white",
   primary: "white",
+  warning: "white",
   positive: "white"
 };
 

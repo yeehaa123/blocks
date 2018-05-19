@@ -17,3 +17,7 @@
 ```react
 <Message variant="success">This is a success</Message>
 ```
+
+```react
+<Message basic variant="success">This is a success</Message>
+```

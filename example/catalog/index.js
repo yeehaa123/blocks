@@ -16,7 +16,7 @@ const theme = {
 
 ReactDOM.render(
   <ThemeProvider theme={themes.offcourse}>
-    <Catalog title="Catalog" theme={theme} pages={pages} />
+    <Catalog title="Documentation" theme={theme} pages={pages} />
   </ThemeProvider>,
   document.getElementById("catalog")
 );

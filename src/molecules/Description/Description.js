@@ -6,6 +6,9 @@ import { Text, Label } from "../../atoms";
 const DescriptionWrapper = styled.div``;
 
 class Description extends Component {
+  static Label = Label;
+  static Text = Text;
+
   render() {
     const { children, label } = this.props;
     if (label) {

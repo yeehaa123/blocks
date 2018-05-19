@@ -8,8 +8,7 @@ import LinkWrapper from "./LinkWrapper";
 
 class Link extends Component {
   render() {
-    const { href, icon, children, onClick, variant, ...rest } = this.props;
-    const disabled = this.props.disabled || this.props.loading;
+    const { href, children, onClick, disabled } = this.props;
     return (
       <LinkWrapper
         onClick={!disabled ? onClick : () => {}}

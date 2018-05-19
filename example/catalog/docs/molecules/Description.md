@@ -11,6 +11,9 @@ with a label prop...
 ...or simply a wrapper
 
 ```react
+const Label = Description.Label;
+const Text = Description.Text;
+
 <Description>
   <Label>Course Description</Label>
   <Text>

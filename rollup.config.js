@@ -33,7 +33,9 @@ export default {
     }),
     resolve(),
     commonjs({
-      namedExports: {} // Default: undefined
+      namedExports: {
+        "react-copy-to-clipboard": ["CopyToClipboard"]
+      } // Default: undefined
     })
   ]
 };

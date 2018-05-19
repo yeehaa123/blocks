@@ -12,6 +12,8 @@ const LinkWrapper = system(
     pb: 0,
     fontSize: 1,
     m: 0,
+    mr: 0,
+    mb: 0,
     focus: {
       outline: "none"
     }
