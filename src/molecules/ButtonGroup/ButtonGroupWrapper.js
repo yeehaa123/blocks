@@ -4,6 +4,7 @@ export default system(
   {
     display: "flex",
     flexDirection: "horizontal",
+    flexWrap: "wrap",
     flex: 1,
     px: 0,
     pb: 0,

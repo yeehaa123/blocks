@@ -28,3 +28,25 @@ const buttons = [
 ];
 <ButtonGroup buttons={buttons} />;
 ```
+
+It can also change the size
+
+```react
+const onClick = () => alert("click");
+const buttons = [
+  { onClick, title: "Mini", variant: "primary" },
+  { onClick, title: "Small" },
+  { onClick, title: "Tiny", variant: "warning" }
+];
+<ButtonGroup size="small" buttons={buttons} />;
+```
+
+```react
+const onClick = () => alert("click");
+const buttons = [
+  { onClick, title: "large", variant: "positive" },
+  { onClick, title: "huge", variant: "warning"},
+  { onClick, title: "gargantuan", variant: "negative" }
+];
+<ButtonGroup size="large" buttons={buttons} />;
+```

@@ -11,6 +11,7 @@ export default class ButtonGroup extends Component {
 
   static propTypes = {
     direction: PropTypes.oneOf(["horizontal", "vertical"]),
+    size: PropTypes.oneOf(["small", "medium", "large"]),
     buttons: PropTypes.arrayOf(
       PropTypes.shape({
         title: PropTypes.string.isRequired,
@@ -30,10 +31,16 @@ export default class ButtonGroup extends Component {
   };
 
   renderButtons = () => {
-    const { buttons } = this.props;
+    const { buttons, size } = this.props;
     return mapIndexed(
       ({ title, variant, href, onClick }, index) => (
-        <Button variant={variant} key={index} href={href} onClick={onClick}>
+        <Button
+          size={size}
+          variant={variant}
+          key={index}
+          href={href}
+          onClick={onClick}
+        >
           {title}
         </Button>
       ),

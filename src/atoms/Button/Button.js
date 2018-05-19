@@ -7,6 +7,36 @@ import ButtonWrapper from "./ButtonWrapper";
  */
 
 class Button extends Component {
+  static propTypes = {
+    /** determines if the button should be disabled */
+    disabled: PropTypes.bool,
+    /** determines the status of the button */
+    variant: PropTypes.oneOf([
+      "default",
+      "primary",
+      "positive",
+      "warning",
+      "negative"
+    ]),
+    /** the text that is displayed on the button */
+    children: PropTypes.string,
+    /** code that the button should execute when clicked */
+    onClick: PropTypes.func,
+    /** a url that the button should link to, automatically turns the button into the basic type */
+    href: PropTypes.string,
+    /** only accept a type prop when type is submit */
+    type: PropTypes.oneOf(["submit", "button"]),
+    /** the size of the button */
+    size: PropTypes.oneOf(["small", "medium", "large"])
+  };
+
+  static defaultProps = {
+    variant: "default",
+    size: "medium",
+    disabled: false,
+    type: "button"
+  };
+
   handleClick = e => {
     const { onClick } = this.props;
     e.preventDefault();
@@ -40,7 +70,8 @@ class Button extends Component {
         disabled={disabled}
         onClick={onClick}
         tabIndex={tabindex || 1}
-        width={widths[size]}
+        minWidth={widths[size]}
+        maxWidth={widths[size]}
       >
         {href ? (
           <a href={!disabled ? href : undefined}>{children}</a>
@@ -51,33 +82,5 @@ class Button extends Component {
     );
   }
 }
-
-Button.propTypes = {
-  /** determines if the button should be disabled */
-  disabled: PropTypes.bool,
-  /** determines the status of the button */
-  variant: PropTypes.oneOf([
-    "default",
-    "primary",
-    "positive",
-    "warning",
-    "negative"
-  ]),
-  /** the text that is displayed on the button */
-  children: PropTypes.string,
-  /** code that the button should execute when clicked */
-  onClick: PropTypes.func,
-  /** a url that the button should link to, automatically turns the button into the basic type */
-  href: PropTypes.string,
-  /** only accept a type prop when type is submit */
-  type: PropTypes.oneOf(["submit", "button"])
-};
-
-Button.defaultProps = {
-  variant: "default",
-  size: "medium",
-  disabled: false,
-  type: "button"
-};
 
 export default Button;

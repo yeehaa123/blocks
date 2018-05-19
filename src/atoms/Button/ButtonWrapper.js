@@ -1,5 +1,5 @@
 import system from "system-components";
-import { theme } from "styled-system";
+import { theme, minWidth, maxWidth } from "styled-system";
 
 const background = {
   default: "grayScale.3",
@@ -48,11 +48,12 @@ const ButtonWrapper = system(
     border: 0,
     fontSize: 1,
     lineHeight: 1,
-    width: "6.25rem",
     px: 7,
     py: 5,
     borderBottom: 3
   },
+  minWidth,
+  maxWidth,
   props => ({
     backgroundColor: theme(`colors.${background[props.variant]}`)(props),
     borderColor: theme(`colors.${inverseBackground[props.variant]}`)(props),
