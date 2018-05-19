@@ -1,7 +1,7 @@
 import system from "system-components";
 
 const TagWrapper = system({
-  display: "block",
+  display: "inline-block",
   color: "black",
   bg: "grayScale.1",
   py: 0,

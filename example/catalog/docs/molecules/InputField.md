@@ -1,6 +1,10 @@
+Inputfield make handling with Inputs on Forms easier
+
 ```react
 <InputField title="Goal of the Course" name="goal" placeholder="Goal" />
 ```
+
+They can be small
 
 ```react
 <InputField
@@ -11,6 +15,8 @@
 />
 ```
 
+They can contain multiple lines of text
+
 ```react
 <InputField
   variant="textarea"
@@ -20,6 +26,8 @@
 />
 ```
 
+They can display errors
+
 ```react
 <InputField
   errors={["Goal Too Short", "Goal Too Long"]}
@@ -28,6 +36,8 @@
   placeholder="Goal"
 />
 ```
+
+They can display sort, delete, or other handles
 
 ```react
 const message = "hello world";
