@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, addIndex, isEmpty } from "ramda";
+import { isEmpty, mapIndexed } from "../../helpers";
 import { Button } from "../../atoms";
 import ButtonGroupWrapper from "./ButtonGroupWrapper";
-
-const mapIndexed = addIndex(map);
 
 export default class ButtonGroup extends Component {
   static Button = Button;

@@ -23,3 +23,38 @@ const icons = [
 
 <IconGroup icons={icons}/>
 ```
+
+It can have different sizes
+
+```react|span-3
+const handleClick = () => alert("clicked");
+const icons = [
+  {name: "eye", onClick: handleClick},
+  {name: "remove", onClick: handleClick},
+  {name: "add", onClick: handleClick},
+];
+
+<IconGroup size="small" icons={icons}/>
+```
+
+```react|span-3
+const handleClick = () => alert("clicked");
+const icons = [
+  {name: "eye", onClick: handleClick},
+  {name: "remove", onClick: handleClick},
+  {name: "add", onClick: handleClick},
+];
+
+<IconGroup size="medium" icons={icons}/>
+```
+
+```react|span-6
+const handleClick = () => alert("clicked");
+const icons = [
+  {name: "eye", onClick: handleClick},
+  {name: "remove", onClick: handleClick},
+  {name: "add", onClick: handleClick},
+];
+
+<IconGroup size="large" icons={icons}/>
+```

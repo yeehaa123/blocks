@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, addIndex, isEmpty } from "ramda";
+import { isEmpty, mapIndexed } from "../../helpers";
 import { Link } from "../../atoms";
 import LinkGroupWrapper from "./LinkGroupWrapper";
-
-const mapIndexed = addIndex(map);
 
 export default class LinkGroup extends Component {
   static Link = Link;

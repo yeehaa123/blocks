@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, addIndex, isEmpty } from "ramda";
+import { isEmpty, mapIndexed } from "../../helpers";
 import { Message } from "../../atoms";
 import MessageGroupWrapper from "./MessageGroupWrapper";
-
-const mapIndexed = addIndex(map);
 
 export default class MessageGroup extends Component {
   static Message = Message;

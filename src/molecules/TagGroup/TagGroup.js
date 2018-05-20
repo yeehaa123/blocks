@@ -1,27 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, addIndex, isEmpty } from "ramda";
+import { isEmpty, mapIndexed } from "../../helpers";
 import { Tag } from "../../atoms";
 import TagGroupWrapper from "./TagGroupWrapper";
-
-const mapIndexed = addIndex(map);
 
 export default class TagGroup extends Component {
   static Tag = Tag;
 
   static propTypes = {
-    tags: PropTypes.arrayOf(
-      PropTypes.shape({
-        message: PropTypes.string.isRequired,
-        variant: PropTypes.oneOf([
-          "default",
-          "error",
-          "info",
-          "success",
-          "warning"
-        ])
-      })
-    ),
+    tags: PropTypes.arrayOf(PropTypes.string),
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element)

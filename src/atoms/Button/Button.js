@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ButtonWrapper from "./ButtonWrapper";
+import { formatTitle } from "../../helpers";
 
 /**
  * The button component for the Offcourse project
@@ -54,14 +55,17 @@ class Button extends Component {
       size,
       ...rest
     } = this.props;
-    const buttonType = type || "button";
 
+    const buttonType = type || "button";
     const disabled = this.props.disabled || this.props.loading;
+
     const widths = {
       small: "6.25rem",
       medium: "9.375rem",
       large: "18.75rem"
     };
+
+    const text = formatTitle(children);
 
     return (
       <ButtonWrapper
@@ -73,11 +77,7 @@ class Button extends Component {
         minWidth={widths[size]}
         maxWidth={widths[size]}
       >
-        {href ? (
-          <a href={!disabled ? href : undefined}>{children}</a>
-        ) : (
-          children
-        )}
+        {href ? <a href={!disabled ? href : undefined}>{text}</a> : text}
       </ButtonWrapper>
     );
   }

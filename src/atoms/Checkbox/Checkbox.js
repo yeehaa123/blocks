@@ -10,6 +10,18 @@ import LabelWrapper from "./LabelWrapper";
  */
 
 class Checkbox extends Component {
+  static propTypes = {
+    /**  allows the user to directly decide if the value is checked or not */
+    checked: PropTypes.bool,
+    /** an optional callback that triggers when the checkbox changes its value */
+    onToggle: PropTypes.func
+  };
+
+  static defaultProps = {
+    checked: false,
+    onToggle: () => null
+  };
+
   state = {
     checked: this.props.checked
   };
@@ -35,21 +47,5 @@ class Checkbox extends Component {
     );
   }
 }
-
-Checkbox.propTypes = {
-  /**
-   *  allows the user to directly decide if the value is checked or not
-   */
-  checked: PropTypes.bool,
-  /**
-   * an optional callback that triggers when the checkbox changes its value
-   */
-  onToggle: PropTypes.func
-};
-
-Checkbox.defaultProps = {
-  checked: false,
-  onToggle: () => null
-};
 
 export default Checkbox;

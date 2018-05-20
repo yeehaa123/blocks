@@ -27,3 +27,17 @@ All Icons that we use...
 ```react|span-2
   <Icon name="twitter" />
 ```
+
+In three different sizes
+
+```react|span-2
+  <Icon size="small" name="twitter" />
+```
+
+```react|span-2
+  <Icon size="medium" name="twitter" />
+```
+
+```react|span-2
+  <Icon size="large" name="twitter" />
+```

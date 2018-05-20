@@ -3,6 +3,7 @@ LinkGroup can explicity declare links
 ```react
 const clickHandler = () => alert("ALERT");
 const Link = LinkGroup.Link;
+
 <LinkGroup spacing="none" direction="vertical">
   <Link onClick={clickHandler}>Click Me</Link>
 

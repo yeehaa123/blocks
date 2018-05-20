@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import titleCase from "voca/title_case";
-import lowerCase from "voca/lower_case";
-import slugify from "voca/slugify";
-import { Text, Avatar, Header } from "../../atoms";
+import { formatTitle } from "../../helpers";
+import { Group, Text, Avatar, Heading } from "../../atoms";
 import CuratorWrapper from "./CuratorWrapper";
 
 class Curator extends Component {
-  profileName() {
-    const { name } = this.props;
-    return titleCase(name);
-  }
+  static propTypes = {
+    name: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string
+  };
 
-  renderHeader() {
-    const { profileUrl } = this.props;
+  renderHeading() {
+    const { name, profileUrl } = this.props;
     return (
-      <Header size="small" href={profileUrl}>
-        {this.profileName()}
-      </Header>
+      <Heading size="small" href={profileUrl}>
+        {formatTitle(name)}
+      </Heading>
     );
   }
 
@@ -26,18 +24,13 @@ class Curator extends Component {
     return (
       <CuratorWrapper>
         <Avatar url={avatarUrl} name={name} />
-        <div>
+        <Group>
           <Text small>Curated by</Text>
-          {this.renderHeader()}
-        </div>
+          {this.renderHeading()}
+        </Group>
       </CuratorWrapper>
     );
   }
 }
-
-Curator.propTypes = {
-  name: PropTypes.string.isRequired,
-  avatarUrl: PropTypes.string
-};
 
 export default Curator;

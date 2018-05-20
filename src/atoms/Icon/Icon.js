@@ -28,6 +28,30 @@ const icons = {
  */
 
 class Icon extends Component {
+  static propTypes = {
+    /** Name name of the icon */
+    name: PropTypes.oneOf(Object.keys(icons)),
+    /** Size of the icon */
+    size: PropTypes.oneOf(["small", "medium", "large"]),
+    /** Url that the button should link to */
+    href: PropTypes.string,
+    /** Indicates if the icon should be spinning */
+    spin: PropTypes.bool,
+    /** Callback that the button should execute when clicked */
+    onClick: PropTypes.func
+  };
+
+  static defaultProps = {
+    size: "medium",
+    spin: false
+  };
+
+  static sizes = {
+    small: "xs",
+    medium: "lg",
+    large: "4x"
+  };
+
   icon() {
     const { name } = this.props;
     return icons[name];
@@ -42,53 +66,10 @@ class Icon extends Component {
         tabIndex={tabIndex}
         onClick={onClick}
       >
-        <FA icon={this.icon()} size={size} spin={false} />
+        <FA icon={this.icon()} size={Icon.sizes[size]} spin={spin} />
       </IconWrapper>
     );
   }
 }
-
-const iconNames = Object.keys(icons);
-
-Icon.propTypes = {
-  /**
-   * @property {string} name name of the icon
-   */
-  name: PropTypes.oneOf(iconNames),
-  /**
-   * @property {string} size size of the icon
-   */
-  size: PropTypes.oneOf([
-    "xs",
-    "sm",
-    "lg",
-    "2x",
-    "3x",
-    "4x",
-    "5x",
-    "6x",
-    "7x",
-    "8x",
-    "9x",
-    "10x"
-  ]),
-  /**
-   * @property {string} href url that the button should link to, automatically turns the button into the basic type
-   */
-  href: PropTypes.string,
-  /**
-   * @property {bool} spin spin indicates if the icon should be spinning
-   */
-  spin: PropTypes.bool,
-  /**
-   * @property {function} onClick callback that the button should execute when clicked
-   */
-  onClick: PropTypes.func
-};
-
-Icon.defaultProps = {
-  size: "lg",
-  spin: false
-};
 
 export default Icon;

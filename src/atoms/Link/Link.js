@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { formatTitle } from "../../helpers";
 import LinkWrapper from "./LinkWrapper";
 
 /**
@@ -15,7 +16,7 @@ class Link extends Component {
         href={!disabled ? href : undefined}
         disabled={disabled}
       >
-        {children}
+        {formatTitle(children)}
       </LinkWrapper>
     );
   }

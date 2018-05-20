@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import titleCase from "voca/title_case";
+import { formatTitle } from "../../helpers";
 import Icon from "../../atoms/Icon";
 import { InputWrapper, OuterWrapper, TextAreaWrapper } from "./wrappers";
 
@@ -11,7 +11,6 @@ class Input extends Component {
       pt,
       pb,
       variant,
-      type,
       children,
       hasErrors,
       name,
@@ -20,28 +19,29 @@ class Input extends Component {
       onChange,
       onBlur
     } = this.props;
-    const small = variant === "small";
-    const formattedPlaceholder = titleCase(placeholder);
-
-    const fieldProps = {
-      name,
-      value,
-      placeholder: formattedPlaceholder,
-      onChange,
-      onBlur
-    };
 
     return (
       <OuterWrapper border={hasErrors ? 2 : 0} pb={pb} pt={pt} mb={mb}>
         {children && children}
         {variant === "textarea" ? (
-          <TextAreaWrapper is="textarea" rows="4" {...fieldProps} />
+          <TextAreaWrapper
+            is="textarea"
+            rows="4"
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            onBlur={onBlur}
+          />
         ) : (
           <InputWrapper
-            type={type || "text"}
-            fontSize={small ? 1 : 3}
-            lineHeight={small ? 1 : 3}
-            {...fieldProps}
+            name={name}
+            value={value}
+            placeholder={placeholder}
+            onChange={onChange}
+            onBlur={onBlur}
+            fontSize={variant === "small" ? 1 : 3}
+            lineHeight={variant === "small" ? 1 : 3}
           />
         )}
       </OuterWrapper>

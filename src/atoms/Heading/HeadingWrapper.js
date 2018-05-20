@@ -1,7 +1,7 @@
 import system from "system-components";
 import { theme } from "styled-system";
 
-const HeaderWrapper = system(
+const HeadingWrapper = system(
   {
     m: 0,
     color: "inherit",
@@ -21,4 +21,4 @@ const HeaderWrapper = system(
   })
 );
 
-export default HeaderWrapper;
+export default HeadingWrapper;

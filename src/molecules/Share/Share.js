@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { contains, filter, compose, map } from "ramda";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { contains, filter, map } from "../../helpers";
 import { Link, Icon } from "../../atoms";
 import { IconGroup } from "../../molecules";
 import ShareWrapper from "./ShareWrapper";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const twitter = (text, url) => {
   return window.open(
@@ -36,7 +36,7 @@ class Share extends Component {
       name => (
         <Icon
           onClick={() => this.handlers[name](text, url)}
-          size="lg"
+          size="medium"
           key={name}
           name={name}
         />
@@ -54,18 +54,12 @@ class Share extends Component {
     );
   }
 
-  showUrl() {
-    const { providers } = this.props;
-    return contains("url", providers);
-  }
-
   render() {
-    const { url } = this.props;
-    const showUrl = this.showUrl();
+    const { url, providers } = this.props;
     return (
       <ShareWrapper>
         <IconGroup>{this.renderIcons()}</IconGroup>
-        {showUrl && this.renderGetUrl()}
+        {contains("url", providers) && this.renderGetUrl()}
       </ShareWrapper>
     );
   }

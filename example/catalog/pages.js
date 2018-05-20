@@ -11,19 +11,19 @@ export default [
     content: pageLoader(() => import("./docs/WELCOME.md"))
   },
   {
-    title: "Basics",
+    title: "Base Styles",
     pages: [
       {
         imports: {
           ...theme.colors,
           grayScale: theme.namedGrayScale
         },
-        path: "/basics/colors",
+        path: "/base_styles/colors",
         title: "Colors",
         content: pageLoader(() => import("./docs/basics/colors.md"))
       },
       {
-        path: "/basics/typography",
+        path: "/base_styles/typography",
         title: "Typography",
         content: pageLoader(() => import("./docs/basics/typography.md"))
       }

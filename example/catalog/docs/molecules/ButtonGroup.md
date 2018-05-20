@@ -8,7 +8,7 @@ const Button = ButtonGroup.Button;
   <Button variant="positive" onClick={onClick}>
     Please Click
   </Button>
-  <Button variant="primary" href="/">
+  <Button variant="primary" href="#/molecules/Curator">
     Click Now!
   </Button>
   <Button variant="negative" onClick={onClick}>

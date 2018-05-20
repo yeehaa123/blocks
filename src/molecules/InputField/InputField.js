@@ -51,7 +51,6 @@ export default class InputField extends Component {
       value,
       onChange,
       onBlur,
-      type,
       children,
       variant,
       handles
@@ -66,7 +65,6 @@ export default class InputField extends Component {
         placeholder={placeholder}
         onChange={onChange}
         onBlur={onBlur}
-        type={type}
         mb={3}
         hasErrors={this.hasErrors()}
         variant={variant}

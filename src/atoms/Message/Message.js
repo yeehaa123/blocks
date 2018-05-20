@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import titleCase from "voca/title_case";
+import { formatTitle } from "../../helpers";
 import { Label } from "..";
 import MessageWrapper from "./MessageWrapper";
 
@@ -31,7 +31,7 @@ class Message extends Component {
         color={basic ? background[variant] : textColor[variant]}
       >
         {variant !== "default" && <Label is="span">{variant}</Label>}
-        {titleCase(children)}
+        {formatTitle(children)}
       </MessageWrapper>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import lowerCase from "voca/lower_case";
+import { lowerCase } from "../../helpers";
 import AvatarWrapper from "./AvatarWrapper";
 
 /**
@@ -9,25 +9,21 @@ import AvatarWrapper from "./AvatarWrapper";
  */
 
 class Avatar extends Component {
+  static propTypes = {
+    /**  url that refers to an avatar image */
+    url: PropTypes.string,
+    /** name of the person corresponding to this avatar */
+    name: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    url: "https://assets.offcourse.io/portraits/offcourse_2.jpg"
+  };
+
   render() {
     let { url, name } = this.props;
     return <AvatarWrapper src={url} alt={`avatar of ${lowerCase(name)}`} />;
   }
 }
-
-Avatar.propTypes = {
-  /**
-   * url that refers to an avatar image
-   * */
-  url: PropTypes.string,
-  /**
-   * name of the person corresponding to this avatar
-   */
-  name: PropTypes.string.isRequired
-};
-
-Avatar.defaultProps = {
-  url: "https://assets.offcourse.io/portraits/offcourse_2.jpg"
-};
 
 export default Avatar;

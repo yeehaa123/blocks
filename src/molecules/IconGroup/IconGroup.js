@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { map, addIndex, isEmpty } from "ramda";
-import { Icon } from "../../atoms";
-
-const mapIndexed = addIndex(map);
+import { isEmpty, mapIndexed } from "../../helpers";
+import { Group, Icon } from "../../atoms";
 
 export default class IconGroup extends Component {
   static Icon = Icon;
@@ -18,7 +16,9 @@ export default class IconGroup extends Component {
     children: PropTypes.oneOfType([
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element)
-    ])
+    ]),
+    /** Size of the icons */
+    size: PropTypes.oneOf(["small", "medium", "large"])
   };
 
   static defaultProps = {
@@ -26,10 +26,10 @@ export default class IconGroup extends Component {
   };
 
   renderIcons = () => {
-    const { icons } = this.props;
+    const { icons, size } = this.props;
     return mapIndexed(
       ({ name, onClick }, index) => (
-        <Icon key={index} name={name} onClick={onClick} />
+        <Icon key={index} size={size} name={name} onClick={onClick} />
       ),
       icons
     );
@@ -37,6 +37,6 @@ export default class IconGroup extends Component {
 
   render() {
     const { icons, children } = this.props;
-    return <div>{isEmpty(icons) ? children : this.renderIcons()}</div>;
+    return <Group>{isEmpty(icons) ? children : this.renderIcons()}</Group>;
   }
 }
