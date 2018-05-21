@@ -9,9 +9,10 @@ import LinkWrapper from "./LinkWrapper";
 
 class Link extends Component {
   render() {
-    const { href, children, onClick, disabled } = this.props;
+    const { basic, href, children, onClick, disabled } = this.props;
     return (
       <LinkWrapper
+        borderBottom={basic ? 0 : 2}
         onClick={!disabled ? onClick : () => {}}
         href={!disabled ? href : undefined}
         disabled={disabled}

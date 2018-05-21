@@ -7,8 +7,8 @@ const theme = themes.offcourse;
 export default [
   {
     path: "/",
-    title: "Welcome",
-    content: pageLoader(() => import("./docs/WELCOME.md"))
+    title: "Introduction",
+    content: pageLoader(() => import("./docs/introduction.md"))
   },
   {
     title: "Base Styles",
