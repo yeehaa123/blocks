@@ -5,8 +5,8 @@ class Group extends Component {
   static propTypes = {};
 
   render() {
-    const { children } = this.props;
-    return <div>{children}</div>;
+    const { children, groupType } = this.props;
+    return <div className={groupType}>{children}</div>;
   }
 }
 

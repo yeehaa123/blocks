@@ -37,6 +37,10 @@ export default class IconGroup extends Component {
 
   render() {
     const { icons, children } = this.props;
-    return <Group>{isEmpty(icons) ? children : this.renderIcons()}</Group>;
+    return (
+      <Group groupType="icons">
+        {isEmpty(icons) ? children : this.renderIcons()}
+      </Group>
+    );
   }
 }

@@ -2,57 +2,109 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { mapIndexed } from "../../helpers";
 import { Input } from "../../atoms";
-import { List, ButtonGroup } from "../../molecules";
+import { List, IconGroup, ButtonGroup } from "../../molecules";
 
 const Button = ButtonGroup.Button;
+const Icon = IconGroup.Icon;
 
 export default class InputList extends Component {
   static Input = Input;
-  static propTypes = {};
-
-  static defaultProps = {
-    errors: [],
-    items: []
+  static propTypes = {
+    /** list of elements that need to be entered */
+    items: PropTypes.arrayOf(PropTypes.string),
+    /** list of errors corresponding to these items */
+    errors: PropTypes.arrayOf(PropTypes.string),
+    /** field that indicates if the form itself is editable (add, remove, move, etc...) */
+    editable: PropTypes.bool,
+    /** title of the field (i.e. label) */
+    title: PropTypes.string.isRequired,
+    /** name of the field */
+    name: PropTypes.string.isRequired,
+    /** placeholder for the value of the field */
+    placeholder: PropTypes.string,
+    /** function that adds a new items to the list */
+    add: PropTypes.func,
+    /** function that removes an item from the list */
+    remove: PropTypes.func,
+    /** function that moves an item to another position */
+    move: PropTypes.func,
+    /** handler for when a list value changes */
+    onChange: PropTypes.func.isRequired,
+    /** handler for when a field loses focus */
+    onBlur: PropTypes.func.isRequired,
+    /** optional component that can be rendered instead of the default one */
+    FieldComponent: PropTypes.func
   };
 
-  renderItems() {
+  static defaultProps = {
+    editable: false,
+    placeholder: "edit this",
+    errors: [],
+    items: [],
+    FieldComponent: Input
+  };
+
+  renderHandles(index) {
+    const { editable, remove, move } = this.props;
+    return (
+      editable && (
+        <IconGroup>
+          <Icon
+            size="small"
+            tabIndex="-1"
+            name="remove"
+            onClick={() => remove(index)}
+          />
+          <Icon size="small" tabIndex="-1" name="sort" />
+        </IconGroup>
+      )
+    );
+  }
+
+  renderFields() {
     const {
       items,
       errors,
-      editable,
       placeholder,
       name,
+      onChange,
+      onBlur,
       FieldComponent
     } = this.props;
     return mapIndexed((item, index) => {
       return (
         <FieldComponent
-          {...item}
+          value={item}
+          onChange={onChange}
+          onBlur={onBlur}
           hasErrors={!!errors[index]}
           mb={3}
           placeholder={placeholder}
           key={index}
           name={`${name}.${index}`}
-        />
+        >
+          {this.renderHandles(index)}
+        </FieldComponent>
       );
     }, items);
   }
 
   renderButtons() {
-    const { title, addItem } = this.props;
+    const { editable, title, add } = this.props;
     return (
-      <ButtonGroup pt={6} justifyContent="flex-end">
-        <Button onClick={addItem}>{`Add ${title.slice(0, -1)}`}</Button>
-      </ButtonGroup>
+      editable && (
+        <ButtonGroup pt={6} justifyContent="flex-end">
+          <Button onClick={add}>{`Add ${title.slice(0, -1)}`}</Button>
+        </ButtonGroup>
+      )
     );
   }
 
   render() {
-    const { editable } = this.props;
     return (
       <Fragment>
-        <List>{this.renderItems()}</List>
-        {editable && this.renderButtons()}
+        <List>{this.renderFields()}</List>
+        {this.renderButtons()}
       </Fragment>
     );
   }

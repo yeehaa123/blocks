@@ -13,7 +13,7 @@ const OuterWrapper = system({
 }).extend`
   box-sizing: "border-box";
   grid-template-areas: "input";
-  .handles, button {
+  .icons, button {
     padding: 0;
     background-color: rgba(255, 255, 255, 0);
     color: ${({ theme }) => theme.colors.grayScale[2]};
