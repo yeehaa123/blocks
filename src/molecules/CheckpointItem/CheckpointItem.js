@@ -16,7 +16,7 @@ export default class CheckpointItem extends Component {
       is,
       resourceUrl
     } = this.props;
-    return trackable ? (
+    return onToggle ? (
       <CheckItem
         is={is}
         id={checkpointId}

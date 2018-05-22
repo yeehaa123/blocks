@@ -6,6 +6,7 @@ export { default as Curator } from "./Curator";
 export { default as Description } from "./Description";
 export { default as IconGroup } from "./IconGroup";
 export { default as InputField } from "./InputField";
+export { default as InputList } from "./InputList";
 export { default as LinkGroup } from "./LinkGroup";
 export { default as List } from "./List";
 export { default as MessageGroup } from "./MessageGroup";

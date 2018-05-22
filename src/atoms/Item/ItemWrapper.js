@@ -21,7 +21,8 @@ const ItemWrapper = system(
   props => ({
     boxSizing: "border-box",
     textDecoration: "inherit",
-    fontFamily: props.theme.fonts.bold
+    fontFamily: props.theme.fonts.bold,
+    userSelect: "none"
   })
 );
 

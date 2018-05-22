@@ -10,10 +10,14 @@ export default class CheckpointList extends Component {
   };
 
   renderChildren() {
-    const { checkpoints, trackable } = this.props;
+    const { checkpoints, onToggle } = this.props;
     return map(
-      ({ checkpointId, ...rest }) => (
-        <CheckpointItem trackable={trackable} key={checkpointId} {...rest} />
+      props => (
+        <CheckpointItem
+          onToggle={onToggle}
+          key={props.checkpointId}
+          {...props}
+        />
       ),
       checkpoints
     );

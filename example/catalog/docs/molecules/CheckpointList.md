@@ -19,6 +19,11 @@ const checkpoints = [{
 ```
 
 ```react
+const onToggle =({ checkpointId, checked }) => {
+  alert(
+    `the id of this item is: ${checkpointId}, its checked status is ${checked}`
+  )
+};
 const checkpoints = [{
   checkpointId: "abc",
   completed: true,
@@ -36,5 +41,5 @@ const checkpoints = [{
   resourceUrl: "#/molecules/List"
 }];
 
-<CheckpointList trackable checkpoints={checkpoints}/>
+<CheckpointList onToggle={onToggle} checkpoints={checkpoints}/>
 ```

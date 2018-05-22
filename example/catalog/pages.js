@@ -1,4 +1,4 @@
-import { atoms, molecules, themes } from "blocks";
+import { atoms, molecules, organisms, themes } from "blocks";
 import { pageLoader } from "catalog";
 import createPages from "./createCollectionPages";
 
@@ -41,6 +41,13 @@ export default [
     pages: createPages({
       name: "molecules",
       blocks: molecules
+    })
+  },
+  {
+    title: "Organisms",
+    pages: createPages({
+      name: "organisms",
+      blocks: organisms
     })
   }
 ];

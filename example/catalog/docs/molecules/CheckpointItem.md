@@ -11,7 +11,7 @@ const checkpoint = {
 <CheckpointItem {...checkpoint}/>
 ```
 
-render a checkitem when trackable
+render a checkitem when it gets an onToggle callback
 
 ```react
 const onToggle =({ checkpointId, checked }) => {
@@ -27,5 +27,5 @@ const checkpoint = {
   resourceUrl: "#/molecules/List"
 };
 
-<CheckpointItem trackable onToggle={onToggle} {...checkpoint}/>
+<CheckpointItem onToggle={onToggle} {...checkpoint}/>
 ```

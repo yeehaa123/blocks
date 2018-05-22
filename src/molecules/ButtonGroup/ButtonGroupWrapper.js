@@ -4,6 +4,7 @@ export default system(
   {
     display: "flex",
     flexDirection: "horizontal",
+    justifyContent: "flex-start",
     flexWrap: "wrap",
     flex: 1,
     px: 0,
@@ -14,10 +15,10 @@ export default system(
 ).extend`
   button {
     margin-right: ${({ theme }) => theme.space[3]};
-  }
 
-  &:last-child {
-    margin-right: 0;
+    &:last-child {
+      margin-right: 0;
+      }
     }
   }
 `;
