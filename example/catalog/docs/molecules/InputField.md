@@ -37,13 +37,30 @@ They can display errors
 />
 ```
 
-They can display sort, delete, or other handles
+They can display children
 
 ```react
-const message = "hello world";
+state: { items: ["", ""], errors: [null, "something went wrong"] }
+---
+const onChange = (e) => {
+  const { name , value } = e.target;
+  const items = [...state.items];
+  const index = name.split(".")[1];
+  items[index] = value;
+  setState({ items })
+};
+
 <InputField
+  title="Goal of the Course"
   name="goal"
-  placeholder="Goal"
-  handles={<div onClick={() => alert(message)}>X</div>}
-/>
+  errors={state.errors}
+  placeholder="Goal">
+  <InputList
+  editable
+    title="Form Fields"
+    onChange={onChange}
+    name="form_fields"
+    items={state.items}
+    errors={state.errors}/>
+</InputField>
 ```

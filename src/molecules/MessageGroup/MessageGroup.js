@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { isEmpty, mapIndexed } from "../../helpers";
+import { isEmpty, keep, mapIndexed } from "../../helpers";
 import { Message } from "../../atoms";
 import MessageGroupWrapper from "./MessageGroupWrapper";
 
@@ -50,7 +50,7 @@ export default class MessageGroup extends Component {
           {message}
         </Message>
       ),
-      errors
+      keep(errors)
     );
   };
 

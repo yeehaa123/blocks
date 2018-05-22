@@ -37,7 +37,7 @@ class Input extends Component {
           <InputWrapper
             name={name}
             value={value}
-            placeholder={placeholder}
+            placeholder={formatTitle(placeholder)}
             onChange={onChange}
             onBlur={onBlur}
             fontSize={variant === "small" ? 1 : 3}

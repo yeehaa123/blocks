@@ -31,7 +31,7 @@ export default class InputList extends Component {
     /** handler for when a list value changes */
     onChange: PropTypes.func.isRequired,
     /** handler for when a field loses focus */
-    onBlur: PropTypes.func.isRequired,
+    onBlur: PropTypes.func,
     /** optional component that can be rendered instead of the default one */
     FieldComponent: PropTypes.func
   };

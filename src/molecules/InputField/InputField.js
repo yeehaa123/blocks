@@ -52,8 +52,7 @@ export default class InputField extends Component {
       onChange,
       onBlur,
       children,
-      variant,
-      handles
+      variant
     } = this.props;
 
     return children ? (
@@ -68,9 +67,7 @@ export default class InputField extends Component {
         mb={3}
         hasErrors={this.hasErrors()}
         variant={variant}
-      >
-        {handles && <div className="handles">{handles}</div>}
-      </Input>
+      />
     );
   }
 
