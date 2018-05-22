@@ -40,7 +40,7 @@ They can display errors
 They can display children
 
 ```react
-state: { items: ["", ""], errors: [null, "something went wrong"] }
+state: { items: ["", ""], errors: [null, null] }
 ---
 const onChange = (e) => {
   const { name , value } = e.target;
