@@ -11,4 +11,5 @@ export { default as LinkGroup } from "./LinkGroup";
 export { default as List } from "./List";
 export { default as MessageGroup } from "./MessageGroup";
 export { default as Share } from "./Share";
+export { default as SortableList } from "./SortableList";
 export { default as TagGroup } from "./TagGroup";
