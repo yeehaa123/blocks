@@ -2,20 +2,23 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { mapIndexed } from "../../helpers";
 import { Input } from "../../atoms";
-import { List, IconGroup, ButtonGroup } from "../../molecules";
+import { move } from "../../helpers";
+import { SortableList, IconGroup, ButtonGroup } from "../../molecules";
 
 const Button = ButtonGroup.Button;
 const Icon = IconGroup.Icon;
 
 export default class InputList extends Component {
   static Input = Input;
+  static move = move;
+
   static propTypes = {
     /** list of elements that need to be entered */
     items: PropTypes.arrayOf(PropTypes.string),
     /** list of errors corresponding to these items */
     errors: PropTypes.arrayOf(PropTypes.string),
-    /** field that indicates if the form itself is editable (add, remove, move, etc...) */
-    editable: PropTypes.bool,
+    /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */
+    arrangeable: PropTypes.bool,
     /** title of the field (i.e. label) */
     title: PropTypes.string.isRequired,
     /** name of the field */
@@ -37,7 +40,7 @@ export default class InputList extends Component {
   };
 
   static defaultProps = {
-    editable: false,
+    arrangeable: false,
     placeholder: "edit this",
     errors: [],
     items: [],
@@ -45,9 +48,9 @@ export default class InputList extends Component {
   };
 
   renderHandles(index) {
-    const { editable, remove, move } = this.props;
+    const { arrangeable, remove, move } = this.props;
     return (
-      editable && (
+      arrangeable && (
         <IconGroup>
           <Icon
             size="small"
@@ -90,9 +93,9 @@ export default class InputList extends Component {
   }
 
   renderButtons() {
-    const { editable, title, add } = this.props;
+    const { arrangeable, title, add } = this.props;
     return (
-      editable && (
+      arrangeable && (
         <ButtonGroup pt={6} justifyContent="flex-end">
           <Button onClick={add}>{`Add ${title.slice(0, -1)}`}</Button>
         </ButtonGroup>
@@ -101,9 +104,10 @@ export default class InputList extends Component {
   }
 
   render() {
+    const { move } = this.props;
     return (
       <Fragment>
-        <List>{this.renderFields()}</List>
+        <SortableList onSort={move}>{this.renderFields()}</SortableList>
         {this.renderButtons()}
       </Fragment>
     );

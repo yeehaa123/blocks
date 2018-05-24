@@ -9,6 +9,7 @@ import {
   compose,
   isEmpty
 } from "ramda";
+import { arrayMove as move } from "react-sortable-hoc";
 
 const formatTitle = compose(titleCase, lowerCase);
 const mapIndexed = addIndex(map);
@@ -16,6 +17,7 @@ const keep = filter(identity);
 
 export {
   map,
+  move,
   filter,
   keep,
   contains,

@@ -56,7 +56,6 @@ const onChange = (e) => {
   errors={state.errors}
   placeholder="Goal">
   <InputList
-  editable
     title="Form Fields"
     onChange={onChange}
     name="form_fields"
