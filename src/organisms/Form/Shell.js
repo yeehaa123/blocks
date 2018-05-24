@@ -35,10 +35,9 @@ class Shell extends Component {
   }
 
   handleCancel = () => {
-    const { initialValues, resetForm, setValues, onCancel } = this.props;
-    onCancel();
-    setValues(initialValues);
+    const { resetForm, onCancel } = this.props;
     resetForm();
+    onCancel();
   };
 
   buttonData() {

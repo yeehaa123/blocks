@@ -35,13 +35,13 @@ class Auth extends Component {
     userName: ""
   };
 
-  switchTo = (newMode, { userName }) => {
-    this.setState({ mode: newMode, userName });
+  switchTo = newMode => {
+    return ({ userName }) => this.setState({ mode: newMode, userName });
   };
 
   reset = () => {
     const { onCancel, defaultMode } = this.props;
-    this.switchTo(defaultMode, { userName: "" });
+    this.switchTo(defaultMode)({ userName: "" });
     onCancel();
   };
 
@@ -49,15 +49,15 @@ class Auth extends Component {
     const { mode } = this.state;
 
     const SignIn = {
-      onClick: values => this.switchTo(SIGNING_IN, values),
+      onClick: () => this.switchTo(SIGNING_IN)({ userName: "" }),
       title: "Sign In"
     };
     const SignUp = {
-      onClick: values => this.switchTo(SIGNING_UP, values),
+      onClick: this.switchTo(SIGNING_UP),
       title: "Sign Up"
     };
     const RetrievePassword = {
-      onClick: values => this.switchTo(RETRIEVING_PASSWORD, values),
+      onClick: this.switchTo(RETRIEVING_PASSWORD),
       title: "Password Lost"
     };
 
