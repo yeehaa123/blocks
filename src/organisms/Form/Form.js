@@ -6,18 +6,40 @@ import { Field } from "./sections";
 
 export default class Form extends Component {
   static Field = Field;
+
   static FieldList = () => null;
+
   static propTypes = {
+    /** predefined values for the form */
     initialValues: PropTypes.object.isRequired,
+    /** title of the form */
     title: PropTypes.string.isRequired,
+    /** object with external errors */
     errors: PropTypes.object,
+    /** object that defines the links to other forms */
     links: PropTypes.arrayOf(
       PropTypes.shape({
         onClick: PropTypes.func.isRequired,
         title: PropTypes.string.isRequired
       })
     ),
-    mode: PropTypes.oneOf(["normal", "confirm"]),
+    buttons: PropTypes.objectOf(
+      PropTypes.shape({
+        href: PropTypes.string,
+        type: PropTypes.string,
+        size: PropTypes.oneOf(["small", "medium", "large"]),
+        onClick: PropTypes.func,
+        title: PropTypes.string,
+        variant: PropTypes.oneOf([
+          "default",
+          "primary",
+          "positive",
+          "warning",
+          "negative"
+        ])
+      })
+    ),
+    mode: PropTypes.string,
     cancelTitle: PropTypes.string,
     submitTitle: PropTypes.string,
     onSubmit: PropTypes.func.isRequired
@@ -26,7 +48,7 @@ export default class Form extends Component {
   renderElements(props) {
     const { children, title, ...rest } = this.props;
     return Children.map(children, child => {
-      return React.cloneElement(child, { ...rest, ...props });
+      return child && React.cloneElement(child, { ...rest, ...props });
     });
   }
 
@@ -37,11 +59,11 @@ export default class Form extends Component {
       errors,
       links,
       mode,
-      cancelTitle,
+      buttons,
       onCancel,
-      submitTitle,
       onSubmit
     } = this.props;
+
     return (
       <Formik initialValues={initialValues} onSubmit={onSubmit}>
         {props => {
@@ -51,8 +73,7 @@ export default class Form extends Component {
               links={links}
               mode={mode}
               onCancel={onCancel}
-              cancelTitle={cancelTitle}
-              submitTitle={submitTitle}
+              buttons={buttons}
               title={title}
               {...props}
             >

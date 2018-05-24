@@ -1,6 +1,7 @@
 import React, { Children, Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import FormWrapper from "./FormWrapper";
+import { map, mapObject, values } from "../../helpers";
 import { Section, Heading } from "../../atoms";
 import { MessageGroup, ButtonGroup, LinkGroup } from "../../molecules";
 
@@ -10,7 +11,8 @@ class Shell extends Component {
   state = {};
   static defaultProps = {
     onCancel: () => null,
-    mode: "normal"
+    mode: "normal",
+    buttons: {}
   };
 
   static getDerivedStateFromProps(
@@ -32,9 +34,52 @@ class Shell extends Component {
     };
   }
 
+  handleCancel = () => {
+    const { initialValues, resetForm, setValues, onCancel } = this.props;
+    onCancel();
+    setValues(initialValues);
+    resetForm();
+  };
+
+  buttonData() {
+    const { dirty, isSubmitting, isValid, buttons } = this.props;
+    const { cancel, submit, ...rest } = buttons;
+
+    const others = mapObject((obj, key) => {
+      return {
+        ...obj,
+        disabled: isSubmitting
+      };
+    }, rest);
+
+    return values({
+      cancel: {
+        title: "Cancel",
+        onClick: this.handleCancel,
+        disabled: !dirty || isSubmitting,
+        ...cancel
+      },
+      submit: {
+        title: "Submit",
+        variant: "positive",
+        type: "submit",
+        disabled: !isValid || isSubmitting,
+        ...submit
+      },
+      ...others
+    });
+  }
+
+  linkData() {
+    const { links, values } = this.props;
+    return map(({ onClick, title }) => {
+      return { onClick: () => onClick(values), title };
+    }, links);
+  }
+
   renderErrors() {
     const { errors } = this.props;
-    return <MessageGroup errors={errors.general} />;
+    return <MessageGroup errors={[errors.general]} />;
   }
 
   renderHeader() {
@@ -47,21 +92,12 @@ class Shell extends Component {
   }
 
   renderLinks() {
-    const { links } = this.props;
-    return <LinkGroup px={8} pt={6} direction="vertical" links={links} />;
+    return (
+      <LinkGroup px={8} pt={6} direction="vertical" links={this.linkData()} />
+    );
   }
 
-  renderActions() {
-    const {
-      dirty,
-      isSubmitting,
-      resetForm,
-      isValid,
-      onCancel,
-      cancelTitle,
-      submitTitle
-    } = this.props;
-
+  renderButtons() {
     return (
       <Section
         py={7}
@@ -69,37 +105,20 @@ class Shell extends Component {
         flexDirection="column"
         alignItems="flex-end"
       >
-        <ButtonGroup>
-          <Button
-            disabled={!dirty || isSubmitting}
-            onClick={() => {
-              onCancel();
-              resetForm();
-            }}
-          >
-            {cancelTitle || "Cancel"}
-          </Button>
-          <Button
-            disabled={!isValid || isSubmitting}
-            variant="positive"
-            type="submit"
-          >
-            {submitTitle || "Submit"}
-          </Button>
-        </ButtonGroup>
+        <ButtonGroup buttons={this.buttonData()} />
       </Section>
     );
   }
 
   render() {
-    const { children, handleSubmit } = this.props;
+    const { children, links, handleSubmit } = this.props;
     return (
       <FormWrapper onSubmit={handleSubmit}>
         {this.renderErrors()}
         {this.renderHeader()}
         {children}
-        {this.renderLinks()}
-        {this.renderActions()}
+        {links && this.renderLinks()}
+        {this.renderButtons()}
       </FormWrapper>
     );
   }
