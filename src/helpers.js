@@ -2,6 +2,7 @@ import titleCase from "voca/title_case";
 import lowerCase from "voca/lower_case";
 import {
   map,
+  curry,
   filter,
   identity,
   contains,
@@ -21,6 +22,7 @@ const merge = mergeDeepRight;
 const mapObject = mapObjIndexed;
 
 export {
+  curry,
   map,
   move,
   filter,

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import SignInForm from "../SignInForm";
 import PasswordRetrievalForm from "../PasswordRetrievalForm";
+import { curry } from "../../helpers";
 import SignUpForm from "../SignUpForm";
 
 const SIGNING_IN = "SIGNING_IN";
@@ -35,29 +36,33 @@ class Auth extends Component {
     userName: ""
   };
 
-  switchTo = newMode => {
-    return ({ userName }) => this.setState({ mode: newMode, userName });
+  switchTo = (newMode, { userName }) => {
+    this.setState({
+      mode: newMode,
+      userName: newMode === SIGNING_IN ? "" : userName
+    });
   };
 
   reset = () => {
     const { onCancel, defaultMode } = this.props;
-    this.switchTo(defaultMode)({ userName: "" });
+    this.switchTo(defaultMode, { userName: "" });
     onCancel();
   };
 
   linkData = () => {
     const { mode } = this.state;
+    const switchTo = curry(this.switchTo);
 
     const SignIn = {
-      onClick: () => this.switchTo(SIGNING_IN)({ userName: "" }),
+      onClick: switchTo(SIGNING_IN),
       title: "Sign In"
     };
     const SignUp = {
-      onClick: this.switchTo(SIGNING_UP),
+      onClick: switchTo(SIGNING_UP),
       title: "Sign Up"
     };
     const RetrievePassword = {
-      onClick: this.switchTo(RETRIEVING_PASSWORD),
+      onClick: switchTo(RETRIEVING_PASSWORD),
       title: "Password Lost"
     };
 
