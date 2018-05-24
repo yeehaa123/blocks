@@ -1,5 +1,6 @@
 import React, { Children, Fragment, Component } from "react";
 import PropTypes from "prop-types";
+import FormWrapper from "./FormWrapper";
 import { Section, Heading } from "../../atoms";
 import { MessageGroup, ButtonGroup, LinkGroup } from "../../molecules";
 
@@ -93,13 +94,13 @@ class Shell extends Component {
   render() {
     const { children, handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
+      <FormWrapper onSubmit={handleSubmit}>
         {this.renderErrors()}
         {this.renderHeader()}
         {children}
         {this.renderLinks()}
         {this.renderActions()}
-      </form>
+      </FormWrapper>
     );
   }
 }

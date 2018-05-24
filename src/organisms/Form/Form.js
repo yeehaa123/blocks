@@ -24,7 +24,7 @@ export default class Form extends Component {
   };
 
   renderElements(props) {
-    const { children, ...rest } = this.props;
+    const { children, title, ...rest } = this.props;
     return Children.map(children, child => {
       return React.cloneElement(child, { ...rest, ...props });
     });

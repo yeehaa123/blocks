@@ -1,4 +1,4 @@
-```react|plain,span-4
+```react|span-4
 state: { errors: {}}
 ---
 
