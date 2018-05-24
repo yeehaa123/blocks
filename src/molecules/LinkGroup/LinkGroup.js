@@ -40,9 +40,12 @@ export default class LinkGroup extends Component {
   };
 
   render() {
-    const { links, children, direction } = this.props;
+    const { links, px, pt, pb, children, direction } = this.props;
     return (
       <LinkGroupWrapper
+        px={px}
+        pt={pt}
+        pb={pb}
         flexDirection={direction === "horizontal" ? "row" : "column"}
       >
         {isEmpty(links) ? children : this.renderLinks()}

@@ -46,7 +46,7 @@ export default class MessageGroup extends Component {
     const { errors, basic } = this.props;
     return mapIndexed(
       (message, index) => (
-        <Message basic={basic} variant="error" key={index}>
+        <Message px={8} basic={basic} variant="error" key={index}>
           {message}
         </Message>
       ),
@@ -55,9 +55,9 @@ export default class MessageGroup extends Component {
   };
 
   render() {
-    const { messages, px, pb, errors, children } = this.props;
+    const { messages, errors, children } = this.props;
     return (
-      <MessageGroupWrapper px={px} pb={pb}>
+      <MessageGroupWrapper>
         {!isEmpty(messages) && this.renderMessages()}
         {!isEmpty(errors) && this.renderErrors()}
         {children}
