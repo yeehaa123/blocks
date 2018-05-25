@@ -47,6 +47,7 @@ export default class LinkGroup extends Component {
         pt={pt}
         pb={pb}
         flexDirection={direction === "horizontal" ? "row" : "column"}
+        alignItems="flex-start"
       >
         {isEmpty(links) ? children : this.renderLinks()}
       </LinkGroupWrapper>

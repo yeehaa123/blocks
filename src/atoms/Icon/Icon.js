@@ -58,11 +58,12 @@ class Icon extends Component {
   }
 
   render() {
-    const { size, spin, tabIndex, name, href, is, onClick } = this.props;
+    const { size, color, spin, tabIndex, name, href, is, onClick } = this.props;
     return (
       <IconWrapper
         is={is || (href && "a") || (onClick && "button")}
         type={(is === "button" && "button") || (onClick && "button")}
+        color={color}
         tabIndex={tabIndex}
         onClick={onClick}
       >

@@ -46,7 +46,11 @@ export default class ButtonGroup extends Component {
   render() {
     const { buttons, pt, justifyContent, children, direction } = this.props;
     return (
-      <ButtonGroupWrapper pt={pt} justifyContent={justifyContent}>
+      <ButtonGroupWrapper
+        flexDirection="row"
+        pt={pt}
+        justifyContent={justifyContent}
+      >
         {isEmpty(buttons) ? children : this.renderButtons()}
       </ButtonGroupWrapper>
     );

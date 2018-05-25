@@ -55,9 +55,9 @@ export default class MessageGroup extends Component {
   };
 
   render() {
-    const { messages, errors, children } = this.props;
+    const { messages, errors, px, pb, children } = this.props;
     return (
-      <MessageGroupWrapper>
+      <MessageGroupWrapper px={px} pb={pb} alignItems="stretch">
         {!isEmpty(messages) && this.renderMessages()}
         {!isEmpty(errors) && this.renderErrors()}
         {children}

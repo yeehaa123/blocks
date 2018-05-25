@@ -1,19 +1,8 @@
 import system from "system-components";
+import { Group } from "../../atoms";
 
-export default system(
-  {
-    display: "flex",
-    flexDirection: "horizontal",
-    justifyContent: "flex-start",
-    flexWrap: "wrap",
-    flex: 1,
-    px: 0,
-    pb: 0,
-    pt: 0
-  },
-  "justifyContent"
-).extend`
-  button {
+export default Group.extend`
+  > button {
     margin-right: ${({ theme }) => theme.space[3]};
 
     &:last-child {

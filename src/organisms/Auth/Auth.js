@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { curry } from "../../helpers";
 import SignInForm from "../SignInForm";
 import PasswordRetrievalForm from "../PasswordRetrievalForm";
-import { curry } from "../../helpers";
 import SignUpForm from "../SignUpForm";
 
 const SIGNING_IN = "SIGNING_IN";

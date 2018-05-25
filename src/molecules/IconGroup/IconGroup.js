@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
 import { isEmpty, mapIndexed } from "../../helpers";
+import IconGroupWrapper from "./IconGroupWrapper";
 import { Group, Icon } from "../../atoms";
 
 export default class IconGroup extends Component {
@@ -22,25 +23,39 @@ export default class IconGroup extends Component {
   };
 
   static defaultProps = {
+    direction: "horizontal",
     icons: []
   };
 
   renderIcons = () => {
-    const { icons, size } = this.props;
+    const { icons, size, color } = this.props;
     return mapIndexed(
       ({ name, onClick }, index) => (
-        <Icon key={index} size={size} name={name} onClick={onClick} />
+        <Icon
+          color={color}
+          key={index}
+          size={size}
+          name={name}
+          onClick={onClick}
+        />
       ),
       icons
     );
   };
 
+  renderChildren = () => {
+    const { children, size, color } = this.props;
+    return Children.map(children, child => {
+      return React.cloneElement(child, { size, color });
+    });
+  };
+
   render() {
-    const { icons, children } = this.props;
+    const { icons, direction, children } = this.props;
     return (
-      <Group groupType="icons">
-        {isEmpty(icons) ? children : this.renderIcons()}
-      </Group>
+      <IconGroupWrapper {...IconGroupWrapper.styleProps[direction]}>
+        {isEmpty(icons) ? this.renderChildren() : this.renderIcons()}
+      </IconGroupWrapper>
     );
   }
 }

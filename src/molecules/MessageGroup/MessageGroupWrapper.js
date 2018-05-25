@@ -1,9 +1,3 @@
-import system from "system-components";
+import { Group } from "../../atoms";
 
-export default system({
-  display: "flex",
-  flexDirection: "column",
-  px: 0,
-  pb: 0
-}).extend`
-`;
+export default Group.extend``;

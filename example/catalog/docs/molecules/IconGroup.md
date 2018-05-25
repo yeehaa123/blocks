@@ -58,3 +58,14 @@ const icons = [
 
 <IconGroup size="large" icons={icons}/>
 ```
+
+```react|span-6
+const handleClick = () => alert("clicked");
+const icons = [
+  {name: "eye", onClick: handleClick},
+  {name: "remove", onClick: handleClick},
+  {name: "add", onClick: handleClick},
+];
+
+<IconGroup direction="vertical" size="large" icons={icons}/>
+```
