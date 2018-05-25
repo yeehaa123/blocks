@@ -17,6 +17,7 @@ class Input extends Component {
       value,
       placeholder,
       onChange,
+      type,
       onBlur
     } = this.props;
 
@@ -35,6 +36,7 @@ class Input extends Component {
         ) : (
           <InputWrapper
             name={name}
+            type={type}
             value={value}
             placeholder={formatTitle(placeholder)}
             onChange={onChange}

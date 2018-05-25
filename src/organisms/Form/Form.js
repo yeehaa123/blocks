@@ -2,12 +2,11 @@ import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
 import Shell from "./Shell";
-import { Field } from "./sections";
+import { Field, FieldList } from "./sections";
 
 export default class Form extends Component {
   static Field = Field;
-
-  static FieldList = () => null;
+  static FieldList = FieldList;
 
   static propTypes = {
     /** predefined values for the form */

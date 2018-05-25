@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Form from "../Form";
+import { PasswordInput } from "../../molecules";
 
 const blankUser = {
   userName: "",
@@ -40,6 +41,7 @@ const PasswordRetrievalForm = ({
         <Form.Field
           title="New Password"
           type="password"
+          FieldComponent={PasswordInput}
           name="password"
           placeholder="Password"
         />

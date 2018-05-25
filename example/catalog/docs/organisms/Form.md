@@ -11,13 +11,14 @@ const initialValues = {
 };
 
 
+const Field = Form.Field;
 <Form
   initialValues={initialValues}
   title="Test Form"
   onSubmit={onSubmit}
   onCancel={onCancel}
 >
-  <Form.Field title="Test Field" name="testField" placeholder="Test" />
+  <Field title="Test Field" name="testField" placeholder="Test" />
 </Form>
 ```
 
@@ -28,6 +29,8 @@ state: { errors: {}}
 ---
 
 const errors = {general: "you seem to have misspelled something..."};
+const testItems1 = [{task: "aaaa", resourceUrl: "bbb"}, {task: "", resourceUrl: ""}];
+const testItems2 = ["aaaaa", "bbbb"];
 
 const onSubmit = (values, actions) => {
   setState({errors}),
@@ -37,7 +40,8 @@ const onSubmit = (values, actions) => {
 
 const onCancel = () => alert("Everyting is Erased!!!!");
 const initialValues = {
-  testField: "ab"
+  testField: "ab",
+  testItems: testItems2
 };
 
 const buttons = {
@@ -49,7 +53,7 @@ const buttons = {
   },
   cancel: {
     title: "HELL NO",
-    size: "large"
+    size: "medium"
   },
   submit: {
     title: "Okay",
@@ -62,6 +66,8 @@ const linkData = [
   { onClick: onCancel, title: "Go Someplace Other" }
 ];
 
+const Field = Form.Field;
+const FieldList = Form.FieldList;
 <Form
   initialValues={initialValues}
   errors={state.errors}
@@ -71,6 +77,7 @@ const linkData = [
   onSubmit={onSubmit}
   onCancel={onCancel}
 >
-  <Form.Field title="Test Field" name="testField" placeholder="Test" />
+  <Field title="Test Field" name="testField" placeholder="Test" />
+  <FieldList title="Test Items" name="testItems"/>
 </Form>
 ```

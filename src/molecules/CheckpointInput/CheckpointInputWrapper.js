@@ -6,7 +6,7 @@ const CheckpointSectionWrapper = system(
     bg: "grayScale.1",
     border: 0,
     mb: 3,
-    borderColor: "red"
+    borderColor: "negative"
   },
   props => ({
     fontFamily: props.theme.fonts.bold,

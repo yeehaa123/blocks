@@ -6,12 +6,13 @@ import { InputField } from "../../../molecules";
 
 class FormField extends Component {
   static propTypes = {
+    title: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string.isRequired
   };
 
   render() {
-    const { name, variant, title, placeholder } = this.props;
+    const { name, FieldComponent, variant, title, placeholder } = this.props;
     return (
       <Section>
         <Field
@@ -21,6 +22,7 @@ class FormField extends Component {
             return (
               <InputField
                 {...field}
+                FieldComponent={FieldComponent}
                 variant={variant}
                 title={title}
                 errors={touched[name] && errors[name] && [errors[name]]}

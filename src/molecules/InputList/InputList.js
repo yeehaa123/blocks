@@ -16,7 +16,7 @@ export default class InputList extends Component {
     /** list of elements that need to be entered */
     items: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-    ),
+    ).isRequired,
     /** list of errors corresponding to these items */
     errors: PropTypes.arrayOf(PropTypes.string),
     /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */

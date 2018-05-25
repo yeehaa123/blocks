@@ -15,6 +15,17 @@ They can be small
 />
 ```
 
+Display a custom Input Component
+
+```react
+<InputField
+  variant="small"
+  title="Goal of the Course"
+  name="goal"
+  FieldComponent={PasswordInput}
+/>
+```
+
 They can contain multiple lines of text
 
 ```react

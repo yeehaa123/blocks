@@ -1,6 +1,6 @@
 Static InputList
 
-```react
+```react|span-4
 state: { items: ["", ""], errors: [null, "something went wrong"] }
 ---
 const Input = InputList.Input;
@@ -35,7 +35,7 @@ const onBlur = (e) => {
 
 Arrangeable InputList
 
-```react
+```react|span-4
 state: { items: ["", ""], errors: [null, "something went wrong"] }
 ---
 const Input = InputList.Input;
@@ -91,7 +91,7 @@ const onSort = ({oldIndex, newIndex}) => {
 
 Arrangeable InputList with custom component
 
-```react
+```react|span-4
 state: { items: [{task: "Visit Us", resourceUrl: "http://offcourse.io"},{task: "", resourceUrl: ""}], errors: [null, "something went wrong"] }
 ---
 const onChange = (e) => {

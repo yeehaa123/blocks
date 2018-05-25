@@ -1,4 +1,4 @@
-```react|dark
+```react
 const Tag = TagGroup.Tag;
 <TagGroup>
   <Tag>Spicy</Tag>
@@ -28,6 +28,6 @@ const Tag = TagGroup.Tag;
 </TagGroup>
 ```
 
-```react|dark
+```react
 <TagGroup tags={["Prosciutto", "Short Ribs", "Pork", "Spicy", "Jalapeno", "Tri-Tip", "Jowl"]} />
 ```

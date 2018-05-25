@@ -15,10 +15,12 @@ export default class InputField extends Component {
     onChange: PropTypes.func,
     touched: PropTypes.array,
     errors: PropTypes.array,
-    variant: PropTypes.oneOf(["default", "textarea", "small"])
+    variant: PropTypes.oneOf(["default", "textarea", "small"]),
+    FieldComponent: PropTypes.func
   };
 
   static defaultProps = {
+    FieldComponent: Input,
     errors: [],
     touched: []
   };
@@ -52,13 +54,14 @@ export default class InputField extends Component {
       onChange,
       onBlur,
       children,
+      FieldComponent,
       variant
     } = this.props;
 
     return children ? (
       children
     ) : (
-      <Input
+      <FieldComponent
         name={name}
         value={value}
         placeholder={placeholder}

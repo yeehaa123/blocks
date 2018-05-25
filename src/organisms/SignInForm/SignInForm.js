@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Form from "../Form";
+import { PasswordInput } from "../../molecules";
 
 const Field = Form.Field;
 
@@ -52,7 +53,7 @@ class SignInForm extends Component {
         <Field title="User Name" name="userName" placeholder="User Name" />
         <Field
           title="Password"
-          type="password"
+          FieldComponent={PasswordInput}
           name="password"
           placeholder="Password"
         />
