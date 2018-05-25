@@ -14,7 +14,9 @@ export default class InputList extends Component {
 
   static propTypes = {
     /** list of elements that need to be entered */
-    items: PropTypes.arrayOf(PropTypes.string),
+    items: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
     /** list of errors corresponding to these items */
     errors: PropTypes.arrayOf(PropTypes.string),
     /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */
@@ -49,23 +51,23 @@ export default class InputList extends Component {
 
   renderHandles(index) {
     const { arrangeable, remove, move } = this.props;
+    const icons = [
+      { is: "button", onClick: remove, name: "remove", tabIndex: "-1" },
+      { is: "button", name: "sort", tabIndex: "-1" }
+    ];
     return (
-      arrangeable && (
-        <IconGroup>
-          <Icon
-            size="small"
-            tabIndex="-1"
-            name="remove"
-            onClick={() => remove(index)}
-          />
-          <Icon size="small" tabIndex="-1" name="sort" />
-        </IconGroup>
-      )
+      <IconGroup
+        icons={icons}
+        color="grayScale.2"
+        direction="vertical"
+        size="small"
+      />
     );
   }
 
   renderFields() {
     const {
+      arrangeable,
       items,
       errors,
       placeholder,
@@ -86,7 +88,7 @@ export default class InputList extends Component {
           key={index}
           name={`${name}.${index}`}
         >
-          {this.renderHandles(index)}
+          {arrangeable && this.renderHandles(index)}
         </FieldComponent>
       );
     }, items);

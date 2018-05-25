@@ -14,7 +14,7 @@ const CheckpointSectionWrapper = system(
   })
 ).extend`
   .inputs {
-    flex: 25;
+    flex: 50;
   }
   .handles {
     flex: 1;

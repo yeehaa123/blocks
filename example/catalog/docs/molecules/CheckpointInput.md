@@ -1,4 +1,4 @@
-```react|span-5,dark
+```react|span-3
 state: {
   checkpoint: {
     task: "Hello World",
@@ -20,16 +20,12 @@ const onBlur = () => {
   setState({hasErrors: !state.hasErrors});
 };
 
-const Icon = IconGroup.Icon;
+const icons = [
+  {is: "button", name: "remove", tabIndex: "-1"},
+  {is: "button", name: "sort", tabIndex: "-1"},
+];
 
 <CheckpointInput hasErrors={state.hasErrors} onBlur={onBlur} onChange={onChange} name="checkpoint" value={state.checkpoint}>
-  <IconGroup color="grayScale.2" direction="vertical" size="small">
-    <Icon
-      is="button"
-      name="remove"
-      tabIndex="-1"
-    />
-    <Icon is="button" name="sort" tabIndex="-1" />
-  </IconGroup>
+  <IconGroup icons={icons} color="grayScale.2" direction="vertical" size="small"/>
 </CheckpointInput>
 ```

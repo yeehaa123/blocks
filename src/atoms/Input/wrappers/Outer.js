@@ -1,9 +1,9 @@
 import system from "system-components";
 
 const OuterWrapper = system({
-  display: "grid",
+  display: "flex",
+  flex: 1,
   alignItems: "center",
-  px: 6,
   pb: 4,
   pt: 4,
   m: 0,

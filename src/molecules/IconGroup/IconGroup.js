@@ -28,13 +28,15 @@ export default class IconGroup extends Component {
   };
 
   renderIcons = () => {
-    const { icons, size, color } = this.props;
+    const { icons, size: groupSize, color: groupColor } = this.props;
     return mapIndexed(
-      ({ name, onClick }, index) => (
+      ({ name, size, tabIndex, is, color, onClick }, index) => (
         <Icon
-          color={color}
+          is={is}
+          tabIndex={tabIndex}
+          color={color || groupColor}
           key={index}
-          size={size}
+          size={size || groupSize}
           name={name}
           onClick={onClick}
         />
@@ -46,7 +48,7 @@ export default class IconGroup extends Component {
   renderChildren = () => {
     const { children, size, color } = this.props;
     return Children.map(children, child => {
-      return React.cloneElement(child, { size, color });
+      return React.cloneElement(child, { size, color, ...child.props });
     });
   };
 

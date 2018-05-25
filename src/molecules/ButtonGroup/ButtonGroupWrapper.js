@@ -2,6 +2,7 @@ import system from "system-components";
 import { Group } from "../../atoms";
 
 export default Group.extend`
+  flex-wrap: wrap;
   > button {
     margin-right: ${({ theme }) => theme.space[3]};
 

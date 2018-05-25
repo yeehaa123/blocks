@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { formatTitle } from "../../helpers";
-import Icon from "../../atoms/Icon";
+import { Group } from "../../atoms";
 import { InputWrapper, OuterWrapper, TextAreaWrapper } from "./wrappers";
 
 class Input extends Component {
@@ -22,7 +22,6 @@ class Input extends Component {
 
     return (
       <OuterWrapper border={hasErrors ? 2 : 0} pb={pb} pt={pt} mb={mb}>
-        {children && children}
         {variant === "textarea" ? (
           <TextAreaWrapper
             is="textarea"
@@ -43,6 +42,12 @@ class Input extends Component {
             fontSize={variant === "small" ? 1 : 3}
             lineHeight={variant === "small" ? 1 : 3}
           />
+        )}
+
+        {children && (
+          <Group px={6} alignItems="flex-end">
+            {children}
+          </Group>
         )}
       </OuterWrapper>
     );

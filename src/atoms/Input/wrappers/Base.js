@@ -6,6 +6,7 @@ const BaseWrapper = system(
     bg: "grayScale.1",
     color: "text",
     p: 0,
+    px: 6,
     m: 0,
     border: 0,
     fontSize: 1,

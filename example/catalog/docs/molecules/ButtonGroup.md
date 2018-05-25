@@ -44,7 +44,6 @@ const buttons = [
 ```react
 const onClick = () => alert("click");
 const buttons = [
-  { onClick, title: "large", variant: "positive" },
   { onClick, title: "huge", variant: "warning"},
   { onClick, title: "gargantuan", variant: "negative" }
 ];

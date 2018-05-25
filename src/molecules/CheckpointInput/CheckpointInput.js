@@ -19,7 +19,7 @@ export default class CheckpointInput extends Component {
     } = this.props;
     return (
       <CheckpointInputWrapper border={hasErrors ? 2 : 0}>
-        <Group className="inputs">
+        <Group alignItems="stretch" className="inputs">
           <Input
             onChange={onChange}
             onBlur={onBlur}
