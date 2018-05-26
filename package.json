@@ -27,7 +27,8 @@
     "react-copy-to-clipboard": "^5.0.1",
     "react-sortable-hoc": "^0.7.2",
     "rollup-plugin-json": "^3.0.0",
-    "voca": "^1.4.0"
+    "voca": "^1.4.0",
+    "yup": "^0.25.1"
   },
   "peerDependencies": {
     "prop-types": "^15.5.4",

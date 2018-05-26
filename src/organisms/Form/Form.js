@@ -1,16 +1,20 @@
 import React, { Children, Component } from "react";
 import PropTypes from "prop-types";
 import { Formik } from "formik";
+import yup from "yup";
 import Shell from "./Shell";
 import { Field, FieldList } from "./sections";
 
 export default class Form extends Component {
   static Field = Field;
   static FieldList = FieldList;
+  static yup = yup;
 
   static propTypes = {
+    /** model for the form */
+    Model: PropTypes.func,
     /** predefined values for the form */
-    initialValues: PropTypes.object.isRequired,
+    values: PropTypes.object,
     /** title of the form */
     title: PropTypes.string.isRequired,
     /** object with external errors */
@@ -44,6 +48,10 @@ export default class Form extends Component {
     onSubmit: PropTypes.func.isRequired
   };
 
+  static defaultProps = {
+    values: {}
+  };
+
   renderElements(props) {
     const { children, title, ...rest } = this.props;
     return Children.map(children, child => {
@@ -53,7 +61,8 @@ export default class Form extends Component {
 
   render() {
     const {
-      initialValues,
+      values,
+      FormModel,
       title,
       errors,
       links,
@@ -63,8 +72,14 @@ export default class Form extends Component {
       onSubmit
     } = this.props;
 
+    const initialValues = new FormModel(values);
+
     return (
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
+      <Formik
+        validationSchema={FormModel.schema}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+      >
         {props => {
           return (
             <Shell

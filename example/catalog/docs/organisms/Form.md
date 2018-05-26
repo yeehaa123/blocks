@@ -2,18 +2,29 @@ Basic Form
 
 ```react|span-4
 const onSubmit = (values, actions) => {
+  alert(JSON.stringify(values, null, 2));
   actions.setSubmitting(false)
 };
 
 const onCancel = () => alert("Everyting is Erased!!!!");
-const initialValues = {
-  testField: "ab"
-};
 
+const yup = Form.yup;
+class Model {
+  static schema = yup.object().shape({
+    testField: yup.string().min(5).max(8).required()
+  });
+
+  constructor({ testField = ""}){
+    this.testField = testField;
+  }
+}
+
+const values = { testField: "abc"}
 
 const Field = Form.Field;
 <Form
-  initialValues={initialValues}
+  values={values}
+  FormModel={Model}
   title="Test Form"
   onSubmit={onSubmit}
   onCancel={onCancel}
@@ -33,13 +44,14 @@ const testItems1 = [{task: "aaaa", resourceUrl: "bbb"}, {task: "", resourceUrl: 
 const testItems2 = ["aaaaa", "bbbb"];
 
 const onSubmit = (values, actions) => {
+  alert(JSON.stringify(values, null, 2));
   setState({errors}),
   actions.setSubmitting(true)
 };
 
 
 const onCancel = () => alert("Everyting is Erased!!!!");
-const initialValues = {
+const values = {
   testField: "ab",
   testItems: testItems2
 };
@@ -66,10 +78,23 @@ const linkData = [
   { onClick: onCancel, title: "Go Someplace Other" }
 ];
 
+const yup = Form.yup;
+class Model {
+  static schema = yup.object().shape({
+    testField: yup.string().min(5).max(8).required()
+  });
+
+  constructor({ testField = "", testItems = [""]}){
+    this.testField = testField;
+    this.testItems = testItems;
+  }
+}
+
 const Field = Form.Field;
 const FieldList = Form.FieldList;
 <Form
-  initialValues={initialValues}
+  values={values}
+  FormModel={Model}
   errors={state.errors}
   title="Test Form"
   links={linkData}

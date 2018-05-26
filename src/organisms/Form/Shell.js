@@ -55,7 +55,7 @@ class Shell extends Component {
       cancel: {
         title: "Cancel",
         onClick: this.handleCancel,
-        disabled: !dirty || isSubmitting,
+        disabled: isSubmitting,
         ...cancel
       },
       submit: {
