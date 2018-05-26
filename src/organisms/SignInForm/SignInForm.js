@@ -2,8 +2,9 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Form from "../Form";
 import { PasswordInput } from "../../molecules";
+import Model from "./SignInModel";
 
-const Field = Form.Field;
+const { Field } = Form;
 
 class SignInForm extends Component {
   static propTypes = {
@@ -28,10 +29,6 @@ class SignInForm extends Component {
     )
   };
 
-  static defaultProps = {
-    userName: ""
-  };
-
   render() {
     const {
       onSubmit,
@@ -43,7 +40,8 @@ class SignInForm extends Component {
     } = this.props;
     return (
       <Form
-        initialValues={{ userName, password: "" }}
+        Model={Model}
+        values={new Model({ userName })}
         errors={errors}
         title="Sign In"
         links={links}

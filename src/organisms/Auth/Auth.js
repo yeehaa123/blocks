@@ -95,7 +95,7 @@ class Auth extends Component {
     return (
       <FormComponent
         errors={errors}
-        confirmMode={needsConfirmation}
+        mode={needsConfirmation ? "confirm" : "normal"}
         userName={userName}
         links={this.linkData()}
         onCancel={this.reset}

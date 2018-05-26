@@ -49,6 +49,7 @@ export default class Form extends Component {
   };
 
   static defaultProps = {
+    mode: "normal",
     values: {}
   };
 
@@ -62,7 +63,7 @@ export default class Form extends Component {
   render() {
     const {
       values,
-      FormModel,
+      Model,
       title,
       errors,
       links,
@@ -72,12 +73,10 @@ export default class Form extends Component {
       onSubmit
     } = this.props;
 
-    const initialValues = new FormModel(values);
-
     return (
       <Formik
-        validationSchema={FormModel.schema}
-        initialValues={initialValues}
+        validationSchema={Model.schemata[mode]}
+        initialValues={new Model(values)}
         onSubmit={onSubmit}
       >
         {props => {

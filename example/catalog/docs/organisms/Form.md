@@ -9,10 +9,14 @@ const onSubmit = (values, actions) => {
 const onCancel = () => alert("Everyting is Erased!!!!");
 
 const yup = Form.yup;
+
 class Model {
-  static schema = yup.object().shape({
-    testField: yup.string().min(5).max(8).required()
-  });
+  static schemata = {
+    normal: yup.object().shape({
+      testField: yup.string().min(5).max(8).required()
+    })
+  };
+
 
   constructor({ testField = ""}){
     this.testField = testField;
@@ -24,7 +28,7 @@ const values = { testField: "abc"}
 const Field = Form.Field;
 <Form
   values={values}
-  FormModel={Model}
+  Model={Model}
   title="Test Form"
   onSubmit={onSubmit}
   onCancel={onCancel}
@@ -80,9 +84,12 @@ const linkData = [
 
 const yup = Form.yup;
 class Model {
-  static schema = yup.object().shape({
-    testField: yup.string().min(5).max(8).required()
-  });
+  static schemata = {
+    normal: yup.object().shape({
+      testField: yup.string().min(5).max(8).required(),
+      testItems: yup.array().of(yup.string().min(3)).min(2).max(3).required()
+    })
+  };
 
   constructor({ testField = "", testItems = [""]}){
     this.testField = testField;
@@ -94,7 +101,7 @@ const Field = Form.Field;
 const FieldList = Form.FieldList;
 <Form
   values={values}
-  FormModel={Model}
+  Model={Model}
   errors={state.errors}
   title="Test Form"
   links={linkData}

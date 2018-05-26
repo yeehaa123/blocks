@@ -2,16 +2,10 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { CheckpointInput } from "../../molecules";
 import { Form } from "../../organisms";
+import Model from "./CourseModel";
 
 const Field = Form.Field;
 const FieldList = Form.FieldList;
-
-class Checkpoint {
-  constructor() {
-    this.task = "";
-    this.resourceUrl = "";
-  }
-}
 
 export default class CourseForm extends Component {
   static propTypes = {
@@ -26,14 +20,7 @@ export default class CourseForm extends Component {
   };
 
   static defaultProps = {
-    mode: "create",
-    course: {
-      goal: "",
-      checkpoints: [new Checkpoint()],
-      description: ""
-    },
-    onSubmit: () => null,
-    onCancel: () => null
+    mode: "create"
   };
 
   render() {
@@ -41,7 +28,9 @@ export default class CourseForm extends Component {
     const title = `${mode} Course`;
     return (
       <Form
-        initialValues={course}
+        Model={Model}
+        values={new Model(course)}
+        mode={mode}
         title={title}
         onSubmit={onSubmit}
         onCancel={onCancel}
@@ -49,7 +38,7 @@ export default class CourseForm extends Component {
         <Field title="Goal" name="goal" placeholder="Goal" />
         <FieldList
           title="Checkpoints"
-          emptyItem={new Checkpoint()}
+          emptyItem={new Model.Checkpoint()}
           name="checkpoints"
           FieldComponent={CheckpointInput}
         />

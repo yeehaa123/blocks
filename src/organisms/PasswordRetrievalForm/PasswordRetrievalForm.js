@@ -2,65 +2,66 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Form from "../Form";
 import { PasswordInput } from "../../molecules";
+import Model from "./PasswordRetrievalModel";
 
-const blankUser = {
-  userName: "",
-  confirmationCode: "",
-  password: ""
-};
-
-const PasswordRetrievalForm = ({
-  confirmMode,
-  userName,
-  onSubmit,
-  onCancel,
-  links,
-  errors
-}) => {
-  const mode = confirmMode ? "confirm" : "normal";
-
-  return (
-    <Form
-      initialValues={userName ? { ...blankUser, userName } : blankUser}
-      errors={errors}
-      mode={mode}
-      links={links}
-      onSubmit={onSubmit}
-      onCancel={onCancel}
-      title="Retrieve Password"
-    >
-      <Form.Field title="User Name" name="userName" placeholder="User Name" />
-      {confirmMode && (
-        <Form.Field
-          title="Confirmation Code"
-          name="confirmationCode"
-          placeholder="Confirmation Code"
-        />
-      )}
-      {confirmMode && (
-        <Form.Field
-          title="New Password"
-          type="password"
-          FieldComponent={PasswordInput}
-          name="password"
-          placeholder="Password"
-        />
-      )}
-    </Form>
-  );
-};
-
-PasswordRetrievalForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func,
-  onRequestSignIn: PropTypes.func,
-  confirmMode: PropTypes.bool,
-  userName: PropTypes.string,
-  errors: PropTypes.shape({
+class PasswordRetrievalForm extends Component {
+  static propTypes = {
+    /** callback that triggers when the form is submitted */
+    onSubmit: PropTypes.func.isRequired,
+    /** callback that triggers when the form is cancelled */
+    onCancel: PropTypes.func,
+    /** optional initial username */
     userName: PropTypes.string,
-    confirmationCode: PropTypes.string,
-    password: PropTypes.string
-  })
-};
+    /** object with external errors */
+    errors: PropTypes.shape({
+      userName: PropTypes.string,
+      confirmationCode: PropTypes.string,
+      password: PropTypes.string
+    }),
+    /** flag that indicates confirmMode */
+    mode: PropTypes.oneOf(["confirm", "normal"]),
+    /** object that defines the links to other forms */
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        onClick: PropTypes.func.isRequired,
+        title: PropTypes.string.isRequired
+      })
+    )
+  };
+
+  render() {
+    const { mode, userName, onSubmit, onCancel, links, errors } = this.props;
+    return (
+      <Form
+        Model={Model}
+        values={new Model({ userName })}
+        errors={errors}
+        mode={mode}
+        links={links}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+        title="Retrieve Password"
+      >
+        <Form.Field title="User Name" name="userName" placeholder="User Name" />
+        {mode === "confirm" && (
+          <Fragment>
+            <Form.Field
+              title="Confirmation Code"
+              name="confirmationCode"
+              placeholder="Confirmation Code"
+            />
+            <Form.Field
+              title="New Password"
+              type="password"
+              FieldComponent={PasswordInput}
+              name="password"
+              placeholder="Password"
+            />
+          </Fragment>
+        )}
+      </Form>
+    );
+  }
+}
 
 export default PasswordRetrievalForm;

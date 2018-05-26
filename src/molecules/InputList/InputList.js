@@ -52,7 +52,12 @@ export default class InputList extends Component {
   renderHandles(index) {
     const { arrangeable, remove, move } = this.props;
     const icons = [
-      { is: "button", onClick: remove, name: "remove", tabIndex: "-1" },
+      {
+        is: "button",
+        onClick: () => remove(index),
+        name: "remove",
+        tabIndex: "-1"
+      },
       { is: "button", name: "sort", tabIndex: "-1" }
     ];
     return (

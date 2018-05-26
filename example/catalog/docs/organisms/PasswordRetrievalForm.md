@@ -1,11 +1,9 @@
 ```react|span-4
-const confirmMode = false;
 const errors = {};
 const userName = "";
 const handler = () => alert("Done!");
 
 <PasswordRetrievalForm
-  confirmMode={confirmMode}
   errors={errors}
   userName={userName}
   onSubmit={handler}
@@ -21,7 +19,7 @@ const userName = "";
 const handler = () => alert("Done!");
 
 <PasswordRetrievalForm
-  confirmMode={confirmMode}
+  mode="confirm"
   errors={errors}
   userName={userName}
   onSubmit={handler}

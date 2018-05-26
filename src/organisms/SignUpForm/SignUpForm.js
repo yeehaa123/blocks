@@ -2,6 +2,7 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Form from "../Form";
 import { PasswordInput } from "../../molecules";
+import Model from "./SignUpModel";
 
 class SignUpForm extends Component {
   static propTypes = {
@@ -19,7 +20,7 @@ class SignUpForm extends Component {
       password: PropTypes.string
     }),
     /** flag that indicates confirmMode */
-    confirmMode: PropTypes.bool,
+    mode: PropTypes.oneOf(["confirm", "normal"]),
     /** object that defines the links to other forms */
     links: PropTypes.arrayOf(
       PropTypes.shape({
@@ -29,38 +30,20 @@ class SignUpForm extends Component {
     )
   };
 
-  static defaultProps = {
-    confirmMode: false,
-    userName: ""
-  };
-
   render() {
-    const {
-      confirmMode,
-      userName,
-      onSubmit,
-      links,
-      errors,
-      onCancel
-    } = this.props;
-
-    const mode = confirmMode ? "confirm" : "normal";
+    const { mode, userName, onSubmit, links, errors, onCancel } = this.props;
 
     return (
       <Form
-        initialValues={{
-          userName,
-          email: "",
-          password: "",
-          confirmationCode: ""
-        }}
+        Model={Model}
+        values={new Model({ userName })}
         links={links}
         mode={mode}
         errors={errors}
         title="Sign Up"
         onSubmit={onSubmit}
         onCancel={onCancel}
-        setSubmitting={!confirmMode}
+        setSubmitting={mode !== "confirm"}
       >
         <Form.Field title="User Name" name="userName" placeholder="User Name" />
         <Form.Field
@@ -76,7 +59,7 @@ class SignUpForm extends Component {
           placeholder="Password"
         />
 
-        {confirmMode && (
+        {mode === "confirm" && (
           <Form.Field
             title="Confirmation Code"
             name="confirmationCode"
@@ -87,17 +70,5 @@ class SignUpForm extends Component {
     );
   }
 }
-
-SignUpForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onCancel: PropTypes.func,
-  userName: PropTypes.string,
-  errors: PropTypes.shape({
-    userName: PropTypes.string,
-    email: PropTypes.string,
-    confirmationCode: PropTypes.string,
-    password: PropTypes.string
-  })
-};
 
 export default SignUpForm;
