@@ -18,7 +18,9 @@ export default class InputList extends Component {
       PropTypes.oneOfType([PropTypes.string, PropTypes.object])
     ).isRequired,
     /** list of errors corresponding to these items */
-    errors: PropTypes.arrayOf(PropTypes.string),
+    errors: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    ),
     /** field that indicates if the form itself is arrangeable (add, remove, move, etc...) */
     arrangeable: PropTypes.bool,
     /** title of the field (i.e. label) */

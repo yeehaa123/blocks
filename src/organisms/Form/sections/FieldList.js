@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import yup from "yup";
-import { compose, compact, map, values, uniq, flatten } from "../../../helpers";
+import {
+  compose,
+  clone,
+  compact,
+  map,
+  values,
+  uniq,
+  flatten
+} from "../../../helpers";
 import { FieldArray } from "formik";
 import { Section } from "../../../atoms";
 import { CheckpointInput, InputField, InputList } from "../../../molecules";
@@ -68,7 +76,7 @@ export default class FieldList extends Component {
                   name={name}
                   placeholder={placeholder}
                   items={items}
-                  add={() => push(emptyItem)}
+                  add={() => push(clone(emptyItem))}
                   move={({ oldIndex, newIndex }) => move(oldIndex, newIndex)}
                   remove={remove}
                   errors={listErrors}

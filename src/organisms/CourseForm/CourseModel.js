@@ -1,4 +1,6 @@
 import { map } from "../../helpers";
+import schemata from "./schemata";
+
 class CheckpointModel {
   constructor({ task = "", resourceUrl = "" } = {}) {
     this.task = task;
@@ -8,10 +10,7 @@ class CheckpointModel {
 
 class CourseModel {
   static Checkpoint = CheckpointModel;
-  static schemata = {
-    create: null,
-    edit: null
-  };
+  static schemata = schemata;
 
   constructor({
     goal = "",
