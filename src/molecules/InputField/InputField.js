@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Section, Label, Input } from "../../atoms";
-import { isEmpty, keep } from "../../helpers";
+import { isEmpty, compact } from "../../helpers";
 import { MessageGroup, IconGroup } from "../../molecules";
 import InputFieldWrapper from "./InputFieldWrapper";
 
@@ -36,7 +36,7 @@ export default class InputField extends Component {
 
   hasErrors() {
     const { errors } = this.props;
-    return !isEmpty(keep(errors));
+    return !isEmpty(compact(errors));
   }
 
   renderErrors() {

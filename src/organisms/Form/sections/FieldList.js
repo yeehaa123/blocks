@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import yup from "yup";
+import { compose, compact, map, values, uniq, flatten } from "../../../helpers";
 import { FieldArray } from "formik";
 import { Section } from "../../../atoms";
 import { CheckpointInput, InputField, InputList } from "../../../molecules";
@@ -14,6 +16,32 @@ export default class FieldList extends Component {
     emptyItem: ""
   };
 
+  formatFieldError = error => {
+    return yup.object().isType(error)
+      ? map(error => error.split(".")[1], values(error))
+      : error;
+  };
+
+  formatFieldErrors = errors => {
+    const filteredErrors = compose(compact, flatten)(errors);
+    const formattedErrors = map(this.formatFieldError, filteredErrors);
+    return compose(uniq, flatten)(formattedErrors);
+  };
+
+  fieldErrors = errors => {
+    if (!errors) {
+      return [];
+    }
+
+    return yup.string().isType(errors)
+      ? [errors]
+      : this.formatFieldErrors(errors);
+  };
+
+  listErrors = errors => {
+    return yup.array().isType(errors) ? errors : [];
+  };
+
   render() {
     const {
       title,
@@ -23,14 +51,17 @@ export default class FieldList extends Component {
       FieldComponent,
       children
     } = this.props;
+
     return (
       <Section>
         <FieldArray name={name}>
           {({ form, push, remove, move }) => {
             const { dirty, handleChange, values, touched, errors } = form;
             const items = values[name];
+            const fieldErrors = this.fieldErrors(errors[name]);
+            const listErrors = this.listErrors(errors[name]);
             return (
-              <InputField name={name} title={title}>
+              <InputField errors={fieldErrors} name={name} title={title}>
                 <InputList
                   arrangeable
                   title={title}
@@ -40,7 +71,7 @@ export default class FieldList extends Component {
                   add={() => push(emptyItem)}
                   move={({ oldIndex, newIndex }) => move(oldIndex, newIndex)}
                   remove={remove}
-                  errors={["", ""]}
+                  errors={listErrors}
                   onChange={handleChange}
                   FieldComponent={FieldComponent}
                   onBlur={() => {}}
