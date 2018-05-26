@@ -23,7 +23,7 @@ export default class CheckpointInput extends Component {
           <Input
             onChange={onChange}
             onBlur={onBlur}
-            pb={0}
+            pb={2}
             mb={0}
             name={`${name}.task`}
             value={value.task}
