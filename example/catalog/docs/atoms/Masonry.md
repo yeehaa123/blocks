@@ -12,7 +12,7 @@ const createFragment = () => {
   return text.slice(randInt(0, 200), randInt(300,600)).trim();
 };
 
-const fragments = [1,2,3,4].map(createFragment);
+const fragments = [1,2,3,4,5].map(createFragment);
 
 const sizes = [
   { columns: 1, gutter: 20 },
@@ -23,9 +23,13 @@ const sizes = [
 <Masonry sizes={sizes}>
 { ({ forcePack }) => ( fragments.map((fragment, index) => (
   <Card key={index}>
-    <Heading section="title">Example</Heading>
-    <Group section="body"><Text>{fragment}</Text></Group>
-    <Button variant="warning" onClick={forcePack}>Reformat</Button>
+    <Heading size="small" section="title">
+      {`Masonry Example ${index + 1}`}
+    </Heading>
+    <Group section="body">
+      <Text size="small">{fragment}</Text>
+    </Group>
+    <Button size="large" variant="warning" onClick={forcePack}>Reformat</Button>
   </Card>
   ))) }
 </Masonry>
