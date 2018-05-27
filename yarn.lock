@@ -2424,6 +2424,12 @@ dom-converter@~0.1:
   dependencies:
     utila "~0.3"
 
+dom-focus-lock@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/dom-focus-lock/-/dom-focus-lock-1.0.1.tgz#a9977376b2f380a9978cfadeacb8837308b12238"
+  dependencies:
+    focus-lock "^0.0.3"
+
 dom-serializer@0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
@@ -3273,6 +3279,10 @@ flatten@^1.0.2:
 fn-name@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fn-name/-/fn-name-2.0.1.tgz#5214d7537a4d06a4a301c0cc262feb84188002e7"
+
+focus-lock@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/focus-lock/-/focus-lock-0.0.3.tgz#77de4deff0758102101f35a8d9de051669419211"
 
 follow-redirects@^1.0.0:
   version "1.4.1"
@@ -5182,6 +5192,10 @@ no-case@^2.2.0:
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"
   dependencies:
     lower-case "^1.1.1"
+
+no-scroll@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/no-scroll/-/no-scroll-2.1.1.tgz#f37e08cb159b75a5bdbfc0a87cd9223e120e6e27"
 
 node-fetch@^1.0.1:
   version "1.7.3"
@@ -7172,6 +7186,13 @@ style-loader@0.19.0:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+styled-modal@^2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/styled-modal/-/styled-modal-2.6.2.tgz#723ee65e15d835e7158242f91128787c0f66d4d0"
+  dependencies:
+    dom-focus-lock "^1.0.1"
+    no-scroll "^2.1.1"
 
 supports-color@^2.0.0:
   version "2.0.0"
