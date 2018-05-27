@@ -6,6 +6,7 @@ import { Section, Heading } from "../../atoms";
 import { MessageGroup, ButtonGroup, LinkGroup } from "../../molecules";
 
 const Button = ButtonGroup.Button;
+const formatMessages = MessageGroup.formatMessages;
 
 class Shell extends Component {
   state = {};
@@ -78,7 +79,9 @@ class Shell extends Component {
 
   renderErrors() {
     const { errors } = this.props;
-    return <MessageGroup errors={[errors.general]} />;
+    const messages =
+      errors.general && formatMessages([errors.general], { px: 8 });
+    return <MessageGroup messages={messages} />;
   }
 
   renderHeader() {

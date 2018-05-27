@@ -24,12 +24,13 @@ export default class CourseForm extends Component {
   };
 
   render() {
-    const { mode, course, onCancel, onSubmit } = this.props;
+    const { mode, errors, course, onCancel, onSubmit } = this.props;
     const title = `${mode} Course`;
     return (
       <Form
         Model={Model}
         values={new Model(course)}
+        errors={errors}
         mode={mode}
         title={title}
         onSubmit={onSubmit}

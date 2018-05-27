@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { isEmpty, compact, mapIndexed } from "../../helpers";
+import { isEmpty, compact, map, mapIndexed } from "../../helpers";
 import { Message } from "../../atoms";
 import MessageGroupWrapper from "./MessageGroupWrapper";
 
 export default class MessageGroup extends Component {
   static Message = Message;
+
+  static formatMessages = (errors = [], { variant = "error", px } = {}) => {
+    return map(message => {
+      return { message, variant, px };
+    }, errors);
+  };
 
   static propTypes = {
     messages: PropTypes.arrayOf(
@@ -34,23 +40,12 @@ export default class MessageGroup extends Component {
   renderMessages = () => {
     const { messages, basic } = this.props;
     return mapIndexed(
-      ({ message, variant }, index) => (
-        <Message basic={basic} variant={variant} key={index}>
+      ({ message, variant, px }, index) => (
+        <Message px={px} basic={basic} variant={variant} key={index}>
           {message}
         </Message>
       ),
       messages
-    );
-  };
-  renderErrors = () => {
-    const { errors, basic } = this.props;
-    return mapIndexed(
-      (message, index) => (
-        <Message px={8} basic={basic} variant="error" key={index}>
-          {message}
-        </Message>
-      ),
-      compact(errors)
     );
   };
 
@@ -59,7 +54,6 @@ export default class MessageGroup extends Component {
     return (
       <MessageGroupWrapper px={px} pb={pb} alignItems="stretch">
         {!isEmpty(messages) && this.renderMessages()}
-        {!isEmpty(errors) && this.renderErrors()}
         {children}
       </MessageGroupWrapper>
     );

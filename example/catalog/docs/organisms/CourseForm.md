@@ -1,5 +1,5 @@
 ```react|span-4
-state: { errors: {} }
+state: { errors: { general: "you seem to have misspelled something..."} }
 ---
 const submitHandler = (values, actions) => {
   setState(
