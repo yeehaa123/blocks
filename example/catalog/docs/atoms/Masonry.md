@@ -1,4 +1,6 @@
-```react|span-6,frame
+\* This component may render strange in the catalogue due to the way catalog updates its pages. Please click any of the **Add Item** buttons if this occurs.
+
+```react|span-6
 state: {items: [1,2,3,4]}
 ---
 const text = `
