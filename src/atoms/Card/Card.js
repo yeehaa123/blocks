@@ -4,13 +4,7 @@ import { Section } from "../../atoms";
 import CardWrapper from "./CardWrapper";
 
 export default class Card extends Component {
-  static propTypes = {
-    /** card sections are passed in as children*/
-    children: PropTypes.oneOfType([
-      PropTypes.element,
-      PropTypes.arrayOf(PropTypes.element)
-    ]).isRequired
-  };
+  static propTypes = {};
   renderSections() {
     const { children } = this.props;
     return Children.map(children, (child, index) => {
