@@ -1,3 +1,4 @@
+export { default as AppShell } from "./AppShell";
 export { default as Auth } from "./Auth";
 export { default as CourseCard } from "./CourseCard";
 export { default as CourseForm } from "./CourseForm";

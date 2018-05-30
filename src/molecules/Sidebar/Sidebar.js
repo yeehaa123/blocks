@@ -29,7 +29,7 @@ export default class Sidebar extends Component {
       <ReactSidebar
         shadow={false}
         styles={styles}
-        sidebar={<Group alignItems="stretch">{content}</Group>}
+        sidebar={content}
         open={isOpen}
         onSetOpen={toggle}
       >

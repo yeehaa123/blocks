@@ -7,7 +7,7 @@ const LinkWrapper = system(
   {
     is: "a",
     alignSelf: "flex-start",
-    lineHeight: 1,
+    lineHeight: 0,
     borderBottom: 2,
     pb: 0,
     fontSize: 1,

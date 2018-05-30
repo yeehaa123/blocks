@@ -7,6 +7,7 @@ export default system(
     alignItems: "flex-start",
     justifyContent: "flex-start",
     flex: 1,
+    mt: 0,
     px: 0,
     pb: 0,
     pt: 0
