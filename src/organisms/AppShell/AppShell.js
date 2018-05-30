@@ -30,7 +30,7 @@ export default class AppShell extends Component {
             <Menu
               justifyContent="flex-end"
               px={6}
-              maxLevel={2}
+              maxLevel={1}
               direction="horizontal"
               links={links}
             />

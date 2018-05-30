@@ -18,13 +18,13 @@ export default class Menu extends Component {
   static propTypes = {
     direction: PropTypes.oneOf(["horizontal", "vertical"]),
     links: PropTypes.arrayOf(PropTypes.shape),
-    maxLevel: PropTypes.oneOf([0, 1, 2])
+    maxLevel: PropTypes.oneOf([0, 1, 2, 3])
   };
 
   static defaultProps = {
     alignItems: "stretch",
     direction: "vertical",
-    maxLevel: 2
+    maxLevel: 3
   };
 
   filteredLinks() {
