@@ -1,44 +1,66 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Logo, Group } from "../../atoms";
-import { NavBar, Menu, Sidebar } from "../../molecules";
+import { NavBar, Menu, Sidebar as Layout } from "../../molecules";
 
 const MenuButton = NavBar.MenuButton;
 
 export default class AppShell extends Component {
   static propTypes = {
-    position: PropTypes.oneOf(["fixed", "absolute"]),
-    links: PropTypes.array,
-    toggle: PropTypes.func,
-    isSidebarOpen: PropTypes.bool
+    /** array of objects that define the links in the menu */
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        level: PropTypes.number.isRequired,
+        onClick: PropTypes.func,
+        href: PropTypes.string
+      })
+    ),
+    /** function that triggers the sidebar to open or close */
+    toggleSidebar: PropTypes.func,
+    /** flag that determines whether the sidebar is open or closed */
+    isSidebarOpen: PropTypes.bool,
+    /** determines the position of the navbar. This is mainly for debugging...*/
+    position: PropTypes.oneOf(["fixed", "absolute"])
   };
 
   static defaultProps = {
-    position: "fixed",
-    links: [],
     isSidebarOpen: false
   };
 
-  render() {
-    const { links, position, children, isSidebarOpen, toggle } = this.props;
-    const content = <Menu links={links} />;
+  renderNavBar = () => {
+    const { links, onLogoClick, toggleSidebar, position } = this.props;
     return (
-      <Sidebar content={content} toggle={toggle} isOpen={isSidebarOpen}>
-        <NavBar position={position}>
-          <Logo />
-          <Group flexDirection="row" alignItems="center">
-            <Menu
-              justifyContent="flex-end"
-              px={6}
-              maxLevel={1}
-              direction="horizontal"
-              links={links}
-            />
-            <MenuButton onClick={toggle} />
-          </Group>
-        </NavBar>
-        <Group mt={8}>{children}</Group>
-      </Sidebar>
+      <NavBar
+        onLogoClick={onLogoClick}
+        onMenuButtonClick={toggleSidebar}
+        links={links}
+        position={position}
+      />
+    );
+  };
+
+  renderSidebar = () => {
+    const { links } = this.props;
+    return <Menu links={links} />;
+  };
+
+  renderMain = () => {
+    const { children } = this.props;
+    return <Group mt={8}>{children}</Group>;
+  };
+
+  render() {
+    const { isSidebarOpen, toggleSidebar } = this.props;
+    return (
+      <Layout
+        content={this.renderSidebar()}
+        toggle={toggleSidebar}
+        isOpen={isSidebarOpen}
+      >
+        {this.renderNavBar()}
+        {this.renderMain()}
+      </Layout>
     );
   }
 }

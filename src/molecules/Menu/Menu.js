@@ -11,10 +11,14 @@ import {
   groupBy
 } from "ramda";
 import { mapIndexed } from "../../helpers";
-import { Section, Group } from "../../atoms";
+import { Section, Group, Icon } from "../../atoms";
 import { LinkGroup } from "../../molecules";
 
 export default class Menu extends Component {
+  static Button = ({ onClick }) => {
+    return <Icon name="hamburger" onClick={onClick} />;
+  };
+
   static propTypes = {
     direction: PropTypes.oneOf(["horizontal", "vertical"]),
     links: PropTypes.arrayOf(PropTypes.shape),
@@ -40,9 +44,10 @@ export default class Menu extends Component {
   }
 
   render() {
-    const { direction, px, justifyContent, alignItems } = this.props;
+    const { display, direction, px, justifyContent, alignItems } = this.props;
     return direction === "horizontal" ? (
       <LinkGroup
+        display={display}
         px={px}
         justifyContent={justifyContent}
         alignItems="center"

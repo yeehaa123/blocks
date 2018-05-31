@@ -1,18 +1,49 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Logo, Icon } from "../../atoms";
+import { Bar, Logo, Icon } from "../../atoms";
 import { Menu } from "../../molecules";
-import NavBarWrapper from "./NavBarWrapper";
 
 export default class NavBar extends Component {
   static Logo = Logo;
-  static MenuButton = ({ onClick, isOpen }) => {
-    return <Icon name="hamburger" onClick={onClick} />;
+
+  static propTypes = {
+    /** function that is invoked when the logo is clicked */
+    onLogoClick: PropTypes.func,
+    /** function that is invoked when the menu button is clicked */
+    onMenuButtonClick: PropTypes.func,
+    /** array of objects that define the links in the menu */
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        level: PropTypes.number.isRequired,
+        onClick: PropTypes.func,
+        href: PropTypes.string
+      })
+    ),
+    /** determines the position of the navbar. This is mainly for debugging...*/
+    position: PropTypes.oneOf(["fixed", "absolute"])
   };
-  static propTypes = {};
+
+  static defaultProps = {
+    onLogoClick: () => {},
+    onMenuClick: () => {}
+  };
 
   render() {
-    const { children, position } = this.props;
-    return <NavBarWrapper position={position}>{children}</NavBarWrapper>;
+    const { links, onLogoClick, onMenuButtonClick, position } = this.props;
+    return (
+      <Bar position={position}>
+        <Logo onClick={onLogoClick} />
+        <Menu
+          display={["none", "flex", "flex"]}
+          justifyContent="flex-end"
+          px={6}
+          maxLevel={2}
+          direction="horizontal"
+          links={links}
+        />
+        <Menu.Button onClick={onMenuButtonClick} />
+      </Bar>
+    );
   }
 }

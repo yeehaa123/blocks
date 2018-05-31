@@ -42,6 +42,7 @@ export default class LinkGroup extends Component {
 
   render() {
     const {
+      display,
       links,
       px,
       pt,
@@ -53,6 +54,7 @@ export default class LinkGroup extends Component {
     } = this.props;
     return (
       <LinkGroupWrapper
+        display={display}
         px={px}
         pt={pt}
         pb={pb}
